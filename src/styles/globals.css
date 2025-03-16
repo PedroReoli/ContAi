@@ -3,182 +3,106 @@
 @tailwind utilities;
 
 :root {
-  /* Cores principais - mais vibrantes */
-  --primary: 0, 99, 177; /* Azul profundo vibrante */
-  --secondary: 0, 184, 148; /* Verde turquesa vibrante */
-  
-  /* Cores de fundo */
-  --background-light: 248, 250, 252;
-  --background-medium: 235, 240, 245;
-  --background-dark: 22, 28, 36;
-  --background-darker: 16, 20, 26;
-  
+  /* Cores principais - Tons sóbrios e profissionais */
+  --primary: 64, 84, 104; /* Azul acinzentado escuro */
+  --secondary: 100, 116, 139; /* Cinza azulado médio */
+  --accent: 148, 163, 184; /* Cinza azulado claro */
+
+  /* Cores de fundo - Tema Claro */
+  --background-light: 248, 250, 252; /* Branco gelo */
+  --background-medium: 241, 245, 249; /* Cinza muito claro */
+  --background-dark: 30, 41, 59; /* Cinza azulado escuro */
+  --background-darker: 15, 23, 42; /* Cinza azulado muito escuro */
+
   /* Cores de texto */
-  --text-primary: 30, 36, 44;
-  --text-secondary: 75, 85, 99;
-  --text-light: 255, 255, 255;
-  --text-muted: 160, 174, 192;
-  --text-accent: 0, 184, 148; /* Verde turquesa */
-  
+  --text-primary: 15, 23, 42; /* Quase preto */
+  --text-secondary: 71, 85, 105; /* Cinza escuro */
+  --text-light: 248, 250, 252; /* Branco gelo */
+  --text-muted: 148, 163, 184; /* Cinza médio */
+  --text-accent: 100, 116, 139; /* Cinza azulado médio */
+
   /* Estados */
-  --state-error: 235, 59, 90; /* Vermelho vibrante */
-  --state-success: 38, 222, 129; /* Verde vibrante */
-  --state-warning: 247, 159, 31; /* Laranja vibrante */
-  --state-info: 85, 166, 255; /* Azul claro */
-  
+  --state-error: 127, 29, 29; /* Vermelho escuro */
+  --state-success: 20, 83, 45; /* Verde escuro */
+  --state-warning: 120, 53, 15; /* Âmbar escuro */
+  --state-info: 30, 58, 138; /* Azul escuro */
+
   /* Botões */
-  --button-primary: 0, 99, 177; /* Azul profundo */
-  --button-secondary: 0, 184, 148; /* Verde turquesa */
-  --button-hover: 0, 119, 197; /* Azul mais escuro */
-  
+  --button-primary: 51, 65, 85; /* Cinza azulado */
+  --button-secondary: 71, 85, 105; /* Cinza médio */
+  --button-hover: 30, 41, 59; /* Cinza azulado escuro */
+
+  /* Sombras */
+  --shadow-color: 15, 23, 42;
+  --shadow-strength: 0.05;
+
   /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, rgb(0, 99, 177) 0%, rgb(0, 119, 197) 100%);
-  --gradient-secondary: linear-gradient(135deg, rgb(0, 184, 148) 0%, rgb(0, 148, 118) 100%);
-  --gradient-accent: linear-gradient(135deg, rgb(0, 99, 177) 0%, rgb(0, 184, 148) 100%);
-  
-  /* Outros */
-  --radius: 0.75rem;
-  --shadow-color: 0, 99, 177;
-  --shadow-strength: 5%;
+  --gradient-primary: linear-gradient(135deg, rgb(51, 65, 85) 0%, rgb(30, 41, 59) 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(100, 116, 139) 0%, rgb(71, 85, 105) 100%);
+  --gradient-accent: linear-gradient(135deg, rgb(148, 163, 184) 0%, rgb(100, 116, 139) 100%);
+
+  /* Bordas e Raios */
+  --radius: 0.5rem;
+  --border: 226, 232, 240;
+  --input: 226, 232, 240;
+  --ring: 51, 65, 85;
 }
 
 .dark {
-  --background: var(--background-dark);
-  --foreground: var(--text-light);
-  
-  /* Ajustes específicos para o tema escuro */
-  --button-primary: 41, 121, 255; /* Azul mais claro no modo escuro */
-  --button-secondary: 38, 222, 129; /* Verde mais claro no modo escuro */
-  --shadow-strength: 10%;
+  /* Cores de fundo - Tema Escuro */
+  --background-light: 15, 23, 42; /* Cinza azulado muito escuro */
+  --background-medium: 30, 41, 59; /* Cinza azulado escuro */
+  --background-dark: 51, 65, 85; /* Cinza azulado */
+  --background-darker: 71, 85, 105; /* Cinza médio */
+
+  /* Cores de texto - Tema Escuro */
+  --text-primary: 248, 250, 252; /* Branco gelo */
+  --text-secondary: 226, 232, 240; /* Cinza muito claro */
+  --text-light: 248, 250, 252; /* Branco gelo */
+  --text-muted: 148, 163, 184; /* Cinza médio */
+
+  /* Bordas e Raios - Tema Escuro */
+  --border: 51, 65, 85;
+  --input: 71, 85, 105;
+
+  /* Sombras - Tema Escuro */
+  --shadow-color: 0, 0, 0;
+  --shadow-strength: 0.1;
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-  
   body {
-    @apply bg-bg-light text-txt-primary;
-    background-image: 
-      radial-gradient(circle at 100% 100%, rgba(var(--primary), 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 0% 0%, rgba(var(--secondary), 0.05) 0%, transparent 50%);
-    background-attachment: fixed;
-  }
-
-  .dark body {
-    @apply bg-bg-dark text-txt-light;
-    background-image: 
-      radial-gradient(circle at 100% 100%, rgba(var(--primary), 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 0% 0%, rgba(var(--secondary), 0.1) 0%, transparent 50%);
-    background-attachment: fixed;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-medium;
-    background: linear-gradient(90deg, rgb(var(--primary)) 0%, rgb(var(--secondary)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-  }
-
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    background: linear-gradient(90deg, rgb(41, 121, 255) 0%, rgb(38, 222, 129) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  h1 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
-  }
-
-  h2 {
-    @apply text-2xl md:text-3xl;
-  }
-
-  h3 {
-    @apply text-xl md:text-2xl;
+    @apply bg-bg-light dark:bg-bg-dark text-txt-primary dark:text-txt-light;
   }
 }
 
 @layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-b from-bg-light via-bg-light to-bg-medium dark:from-bg-dark dark:via-bg-dark dark:to-bg-darker;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
   .btn-primary {
-    @apply bg-gradient-to-r from-primary to-primary/90 text-txt-light hover:from-primary/90 hover:to-primary transition-all px-4 py-2 rounded-lg font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-primary text-txt-light font-medium py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
   }
 
   .btn-secondary {
-    @apply bg-gradient-to-r from-secondary to-secondary/90 text-txt-light hover:from-secondary/90 hover:to-secondary transition-all px-4 py-2 rounded-lg font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+    @apply bg-gradient-secondary text-txt-light font-medium py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50;
   }
 
-  .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-txt-light transition-all px-4 py-2 rounded-lg font-medium hover:-translate-y-0.5 active:translate-y-0;
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative inline-block;
   }
 
-  .card {
-    @apply bg-white/90 dark:bg-bg-darker/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-bg-medium/20 dark:border-bg-dark/30 hover:shadow-xl transition-all;
+  .section-title-underline {
+    @apply absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full;
   }
 
-  .card-header {
-    @apply p-5 border-b border-bg-medium/30 dark:border-bg-dark/50;
-  }
-
-  .card-title {
-    @apply text-xl font-medium text-txt-primary dark:text-txt-light;
-  }
-
-  .card-description {
-    @apply text-sm text-txt-secondary dark:text-txt-muted mt-1;
-  }
-
-  .card-content {
-    @apply p-5;
-  }
-
-  .tab-active {
-    @apply border-b-2 border-primary dark:border-secondary text-primary dark:text-secondary font-medium;
-  }
-
-  .tab-inactive {
-    @apply text-txt-secondary dark:text-txt-muted hover:text-txt-primary dark:hover:text-txt-light transition-colors;
-  }
-  
-  /* Novas classes para efeitos de glassmorphism */
-  .glass {
-    @apply bg-white/70 dark:bg-bg-darker/70 backdrop-blur-md border border-white/20 dark:border-white/10;
-  }
-  
-  /* Novas classes para badges */
-  .badge {
-    @apply px-2 py-0.5 text-xs font-medium rounded-full;
-  }
-  
-  .badge-primary {
-    @apply bg-primary/20 text-primary dark:bg-primary/30 dark:text-primary/90;
-  }
-  
-  .badge-secondary {
-    @apply bg-secondary/20 text-secondary dark:bg-secondary/30 dark:text-secondary/90;
-  }
-  
-  /* Novas classes para alertas */
-  .alert {
-    @apply p-4 rounded-lg border;
-  }
-  
-  .alert-error {
-    @apply bg-state-error/10 border-state-error/20 text-state-error;
-  }
-  
-  .alert-success {
-    @apply bg-state-success/10 border-state-success/20 text-state-success;
-  }
-  
-  .alert-warning {
-    @apply bg-state-warning/10 border-state-warning/20 text-state-warning;
-  }
-  
-  .alert-info {
-    @apply bg-state-info/10 border-state-info/20 text-state-info;
+  .glass-card {
+    @apply bg-white/90 dark:bg-bg-darker/90 backdrop-blur-sm rounded-xl shadow-xl border border-bg-medium/20 dark:border-bg-dark/30;
   }
 }
+
