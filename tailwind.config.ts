@@ -1,16 +1,14 @@
 import type { Config } from "tailwindcss"
-
 const config: Config = {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./App.tsx", "./main.tsx", "*.{js,ts,jsx,tsx,mdx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -46,45 +44,50 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Cores específicas para o ContaAi
-        icms: {
-          blue: "#0066CC",
-          green: "#00A86B",
-          yellow: "#FFD700",
-          red: "#FF4136",
-          gray: "#6B7280",
+        // Cores primárias
+        vinho: {
+          DEFAULT: "#4B2C2C", // Vinho Profundo
+          light: "#6D4141",
+          dark: "#3A2222",
+        },
+        // Cores secundárias
+        dourado: {
+          DEFAULT: "#B59B6A", // Dourado Suave
+          light: "#C9B285",
+          dark: "#9A8359",
+        },
+        // Cores de fundo
+        bg: {
+          light: "#F4F4F4", // Cinza Claro Neutro
+          medium: "#D9D9D9", // Cinza Médio
+          dark: "#121212", // Preto Grafite
+          darker: "#1E1E1E", // Cinza Chumbo
+        },
+        // Cores de texto
+        txt: {
+          primary: "#222222", // Preto para texto principal (modo claro)
+          secondary: "#555555", // Cinza escuro para texto secundário (modo claro)
+          light: "#FFFFFF", // Branco para texto (modo escuro)
+          muted: "#B0B0B0", // Cinza Médio para texto secundário
+          accent: "#B59B6A", // Dourado para texto de destaque
+        },
+        // Cores de estado
+        state: {
+          error: "#8B0000", // Vermelho Escuro
+          success: "#2F4F4F", // Verde Militar
+          warning: "#CDAA7D", // Bronze
+        },
+        // Cores para botões
+        btn: {
+          primary: "#222222", // Preto Fosco
+          secondary: "#3A3A3A", // Cinza Aço
+          hover: "#4B2C2C", // Vinho Profundo
         },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      fontFamily: {
-        sans: ["Inter", "sans-serif"],
-      },
-      boxShadow: {
-        card: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
-        "card-hover": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        fadeIn: "fadeIn 0.3s ease-in-out",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        fadeIn: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
       },
     },
   },

@@ -3,9 +3,6 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
-import { Tabs, TabList, Tab, TabPanel } from "@/components/ui/Tabs"
-import { cn } from "@/lib/utils"
 import { AlertTriangle, Info } from "lucide-react"
 
 // Dados das alíquotas de ICMS por estado
@@ -193,6 +190,7 @@ const MapaICMS: React.FC = () => {
   const [tipoAliquota, setTipoAliquota] = useState<string>("interna")
   const [estadoHover, setEstadoHover] = useState<string | null>(null)
   const [produtoSelecionado, setProdutoSelecionado] = useState<string | null>(null)
+  const [activeTab, setActiveTab] = useState("padrao")
 
   // Verificar se o mapa foi carregado
   useEffect(() => {
@@ -219,14 +217,14 @@ const MapaICMS: React.FC = () => {
 
   // Função para obter a cor do estado com base na alíquota
   const getColorScale = (aliquota: number) => {
-    if (aliquota <= 7) return "#EDF2F7"
-    if (aliquota <= 12) return "#CBD5E0"
-    if (aliquota <= 17) return "#A0AEC0"
-    if (aliquota <= 18) return "#718096"
-    if (aliquota <= 20) return "#4A5568"
-    if (aliquota <= 25) return "#2D3748"
-    if (aliquota <= 30) return "#1A202C"
-    return "#171923"
+    if (aliquota <= 7) return "#F8FAFC" // Slate 50
+    if (aliquota <= 12) return "#E2E8F0" // Slate 200
+    if (aliquota <= 17) return "#B59B6A" // Dourado suave (mais claro)
+    if (aliquota <= 18) return "#9A8359" // Dourado suave (mais escuro)
+    if (aliquota <= 20) return "#6D4141" // Vinho (mais claro)
+    if (aliquota <= 25) return "#4B2C2C" // Vinho profundo
+    if (aliquota <= 30) return "#3A2222" // Vinho (mais escuro)
+    return "#1E1E1E" // Preto fosco
   }
 
   // Função para obter a alíquota do estado com base no tipo selecionado
@@ -272,20 +270,22 @@ const MapaICMS: React.FC = () => {
     }
 
     return (
-      <div className="p-3 bg-white shadow-lg rounded-md border">
-        <h3 className="font-bold text-gray-800">{estado.estado}</h3>
-        <p className="text-gray-600">
-          {tipoTexto}: <span className="font-semibold text-gray-800">{aliquota}%</span>
+      <div className="p-4 bg-white dark:bg-slate-800 shadow-xl rounded-lg border border-slate-200 dark:border-slate-700">
+        <h3 className="font-bold text-lg text-slate-900 dark:text-slate-100">{estado.estado}</h3>
+        <p className="text-slate-600 dark:text-slate-300 mt-1">
+          {tipoTexto}: <span className="font-semibold text-vinho dark:text-dourado">{aliquota}%</span>
         </p>
       </div>
     )
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-6 py-16 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 min-h-screen">
       <div className="mb-12">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Mapa de Alíquotas de ICMS</h1>
-        <p className="text-gray-600 max-w-3xl">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-vinho to-dourado bg-clip-text text-transparent">
+          Mapa de Alíquotas de ICMS
+        </h1>
+        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl">
           Visualize as alíquotas de ICMS aplicadas em cada estado brasileiro, incluindo alíquotas internas e
           interestaduais.
         </p>
@@ -293,18 +293,20 @@ const MapaICMS: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-3">
-          <Card className="overflow-hidden shadow-sm border-0">
-            <CardHeader className="bg-gray-50 border-b">
-              <CardTitle>Mapa do Brasil</CardTitle>
-              <CardDescription>Passe o mouse sobre os estados para ver detalhes</CardDescription>
-            </CardHeader>
-            <CardContent className="p-0">
-              <div className="w-full h-[600px] relative bg-white">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden">
+            <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Mapa do Brasil</h2>
+              <p className="text-slate-600 dark:text-slate-400 mt-1">
+                Passe o mouse sobre os estados para ver detalhes
+              </p>
+            </div>
+            <div className="p-0">
+              <div className="w-full h-[600px] relative bg-white dark:bg-slate-800">
                 {/* Indicador de carregamento */}
                 {!mapaCarregado && !erroCarregamento && (
                   <div className="absolute inset-0 flex items-center justify-center z-0">
-                    <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-gray-800"></div>
-                    <span className="ml-3 text-gray-600">Carregando mapa...</span>
+                    <div className="animate-spin rounded-full h-10 w-10 border-4 border-slate-200 dark:border-slate-700 border-t-vinho dark:border-t-dourado"></div>
+                    <span className="ml-4 text-slate-600 dark:text-slate-400">Carregando mapa...</span>
                   </div>
                 )}
 
@@ -334,7 +336,7 @@ const MapaICMS: React.FC = () => {
                               strokeWidth={0.5}
                               style={{
                                 default: { outline: "none" },
-                                hover: { outline: "none", fill: "#3182CE", stroke: "#FFFFFF", strokeWidth: 1 },
+                                hover: { outline: "none", fill: "#B59B6A", stroke: "#FFFFFF", strokeWidth: 1.5 },
                                 pressed: { outline: "none" },
                               }}
                               onMouseEnter={() => {
@@ -352,19 +354,19 @@ const MapaICMS: React.FC = () => {
                 </ComposableMap>
 
                 {erroCarregamento && (
-                  <div className="absolute inset-0 bg-white z-20 flex flex-col items-center justify-center p-4">
-                    <div className="text-red-500 mb-4">
-                      <AlertTriangle className="h-10 w-10 mx-auto mb-2" />
-                      <p className="text-center font-medium">Não foi possível carregar o mapa interativo.</p>
+                  <div className="absolute inset-0 bg-white dark:bg-slate-800 z-20 flex flex-col items-center justify-center p-6">
+                    <div className="text-red-600 dark:text-red-400 mb-6">
+                      <AlertTriangle className="h-16 w-16 mx-auto mb-4" />
+                      <p className="text-center font-medium text-lg">Não foi possível carregar o mapa interativo.</p>
                     </div>
-                    <div className="border rounded p-4 w-full max-w-md">
-                      <p className="mb-4 text-sm text-gray-600">
+                    <div className="border border-slate-200 dark:border-slate-700 rounded-xl p-6 w-full max-w-md">
+                      <p className="mb-4 text-slate-600 dark:text-slate-400">
                         Você ainda pode consultar as alíquotas na tabela abaixo.
                       </p>
                       <img
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Brazil_Regions_Map.svg/800px-Brazil_Regions_Map.svg.png"
                         alt="Mapa do Brasil"
-                        className="w-full h-auto rounded"
+                        className="w-full h-auto rounded-lg"
                       />
                     </div>
                   </div>
@@ -386,62 +388,61 @@ const MapaICMS: React.FC = () => {
               </div>
 
               {/* Legenda */}
-              <div className="p-4 border-t bg-gray-50 flex flex-wrap justify-center gap-4">
+              <div className="p-6 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex flex-wrap justify-center gap-6">
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#EDF2F7" }}></div>
-                  <span className="text-sm text-gray-600">Até 7%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#F8FAFC" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">Até 7%</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#CBD5E0" }}></div>
-                  <span className="text-sm text-gray-600">8% - 12%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#E2E8F0" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">8% - 12%</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#A0AEC0" }}></div>
-                  <span className="text-sm text-gray-600">13% - 17%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#B59B6A" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">13% - 17%</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#718096" }}></div>
-                  <span className="text-sm text-gray-600">18%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#9A8359" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">18%</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#4A5568" }}></div>
-                  <span className="text-sm text-gray-600">19% - 20%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#6D4141" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">19% - 20%</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#2D3748" }}></div>
-                  <span className="text-sm text-gray-600">21% - 25%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#4B2C2C" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">21% - 25%</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#1A202C" }}></div>
-                  <span className="text-sm text-gray-600">26% - 30%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#3A2222" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">26% - 30%</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 mr-2 rounded" style={{ backgroundColor: "#171923" }}></div>
-                  <span className="text-sm text-gray-600">Acima de 30%</span>
+                  <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#1E1E1E" }}></div>
+                  <span className="text-sm text-slate-600 dark:text-slate-400">Acima de 30%</span>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
         <div>
-          <Card className="shadow-sm border-0 mb-8">
-            <CardHeader className="bg-gray-50 border-b">
-              <CardTitle>Filtros</CardTitle>
-              <CardDescription>Selecione o tipo de alíquota</CardDescription>
-            </CardHeader>
-            <CardContent className="p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden mb-8">
+            <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Filtros</h2>
+              <p className="text-slate-600 dark:text-slate-400 mt-1">Selecione o tipo de alíquota</p>
+            </div>
+            <div className="p-6">
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-sm font-medium mb-3 text-gray-700">Tipo de Alíquota</h3>
-                  <div className="space-y-2">
+                  <h3 className="text-sm font-medium mb-3 text-slate-900 dark:text-slate-100">Tipo de Alíquota</h3>
+                  <div className="space-y-3">
                     <button
-                      className={cn(
-                        "w-full text-left px-3 py-2 rounded text-sm transition-colors",
+                      className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-colors ${
                         tipoAliquota === "interna"
-                          ? "bg-gray-800 text-white"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200",
-                      )}
+                          ? "bg-vinho text-white"
+                          : "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-vinho/20 dark:hover:bg-vinho/40"
+                      }`}
                       onClick={() => {
                         setTipoAliquota("interna")
                         setProdutoSelecionado(null)
@@ -450,12 +451,11 @@ const MapaICMS: React.FC = () => {
                       Alíquota Interna
                     </button>
                     <button
-                      className={cn(
-                        "w-full text-left px-3 py-2 rounded text-sm transition-colors",
+                      className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-colors ${
                         tipoAliquota === "interestadual_sul_sudeste"
-                          ? "bg-gray-800 text-white"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200",
-                      )}
+                          ? "bg-vinho text-white"
+                          : "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-vinho/20 dark:hover:bg-vinho/40"
+                      }`}
                       onClick={() => {
                         setTipoAliquota("interestadual_sul_sudeste")
                         setProdutoSelecionado(null)
@@ -464,12 +464,11 @@ const MapaICMS: React.FC = () => {
                       Interestadual (Sul/Sudeste)
                     </button>
                     <button
-                      className={cn(
-                        "w-full text-left px-3 py-2 rounded text-sm transition-colors",
+                      className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-colors ${
                         tipoAliquota === "interestadual_outros"
-                          ? "bg-gray-800 text-white"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200",
-                      )}
+                          ? "bg-vinho text-white"
+                          : "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-vinho/20 dark:hover:bg-vinho/40"
+                      }`}
                       onClick={() => {
                         setTipoAliquota("interestadual_outros")
                         setProdutoSelecionado(null)
@@ -481,17 +480,18 @@ const MapaICMS: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-medium mb-3 text-gray-700">Produtos com Alíquotas Especiais</h3>
-                  <div className="space-y-2">
+                  <h3 className="text-sm font-medium mb-3 text-slate-900 dark:text-slate-100">
+                    Produtos com Alíquotas Especiais
+                  </h3>
+                  <div className="space-y-3">
                     {produtosEspeciais.map((produto) => (
                       <button
                         key={produto.nome}
-                        className={cn(
-                          "w-full text-left px-3 py-2 rounded text-sm transition-colors",
+                        className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-colors ${
                           produtoSelecionado === produto.nome
-                            ? "bg-gray-800 text-white"
-                            : "bg-gray-100 text-gray-700 hover:bg-gray-200",
-                        )}
+                            ? "bg-dourado text-slate-900"
+                            : "bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100 hover:bg-dourado/20 dark:hover:bg-dourado/40"
+                        }`}
                         onClick={() => setProdutoSelecionado(produtoSelecionado === produto.nome ? null : produto.nome)}
                       >
                         {produto.nome}
@@ -500,81 +500,106 @@ const MapaICMS: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 p-4 rounded border">
-                  <div className="flex items-start mb-2">
-                    <Info className="h-4 w-4 text-gray-500 mt-0.5 mr-2" />
-                    <h3 className="text-sm font-medium text-gray-700">Informações</h3>
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-5 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <div className="flex items-start mb-3">
+                    <Info className="h-5 w-5 text-dourado mt-0.5 mr-2" />
+                    <h3 className="text-sm font-medium text-slate-900 dark:text-slate-100">Informações</h3>
                   </div>
-                  <ul className="text-xs space-y-2 text-gray-600">
+                  <ul className="text-xs space-y-2 text-slate-600 dark:text-slate-400">
                     <li>
-                      <span className="font-medium">Alíquota Interna:</span> Aplicada em operações dentro do mesmo
-                      estado
+                      <span className="font-medium text-slate-900 dark:text-slate-100">Alíquota Interna:</span> Aplicada
+                      em operações dentro do mesmo estado
                     </li>
                     <li>
-                      <span className="font-medium">Alíquota Interestadual:</span> Aplicada em operações entre estados
-                      diferentes
+                      <span className="font-medium text-slate-900 dark:text-slate-100">Alíquota Interestadual:</span>{" "}
+                      Aplicada em operações entre estados diferentes
                     </li>
                     <li>
-                      <span className="font-medium">Sul/Sudeste:</span> Operações entre estados das regiões Sul e
-                      Sudeste (exceto ES)
+                      <span className="font-medium text-slate-900 dark:text-slate-100">Sul/Sudeste:</span> Operações
+                      entre estados das regiões Sul e Sudeste (exceto ES)
                     </li>
                     <li>
-                      <span className="font-medium">Outros:</span> Operações para estados das regiões Norte, Nordeste,
-                      Centro-Oeste e ES
+                      <span className="font-medium text-slate-900 dark:text-slate-100">Outros:</span> Operações para
+                      estados das regiões Norte, Nordeste, Centro-Oeste e ES
                     </li>
                   </ul>
                 </div>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="mt-12">
-        <Card className="shadow-sm border-0">
-          <CardHeader className="bg-gray-50 border-b">
-            <CardTitle>Tabela de Alíquotas</CardTitle>
-            <CardDescription>Consulte as alíquotas de ICMS de todos os estados</CardDescription>
-          </CardHeader>
-          <CardContent className="p-0">
-            <Tabs defaultTab="padrao">
-              <TabList className="px-4 pt-4 border-b">
-                <Tab id="padrao" className="px-4 py-2 font-medium">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden">
+          <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Tabela de Alíquotas</h2>
+            <p className="text-slate-600 dark:text-slate-400 mt-1">Consulte as alíquotas de ICMS de todos os estados</p>
+          </div>
+          <div className="p-0">
+            <div className="border-b border-slate-200 dark:border-slate-700">
+              <div className="flex">
+                <button
+                  className={`px-6 py-4 font-medium text-sm transition-colors ${
+                    activeTab === "padrao"
+                      ? "border-b-2 border-vinho dark:border-dourado text-vinho dark:text-dourado"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                  }`}
+                  onClick={() => setActiveTab("padrao")}
+                >
                   Alíquotas Padrão
-                </Tab>
-                <Tab id="especiais" className="px-4 py-2 font-medium">
+                </button>
+                <button
+                  className={`px-6 py-4 font-medium text-sm transition-colors ${
+                    activeTab === "especiais"
+                      ? "border-b-2 border-vinho dark:border-dourado text-vinho dark:text-dourado"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                  }`}
+                  onClick={() => setActiveTab("especiais")}
+                >
                   Alíquotas Especiais
-                </Tab>
-              </TabList>
+                </button>
+              </div>
+            </div>
 
-              <TabPanel id="padrao" className="p-4">
+            <div className="p-6">
+              {activeTab === "padrao" && (
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr>
-                        <th className="border border-gray-200 p-2 text-left bg-gray-50 font-medium text-gray-700">
+                        <th className="border border-slate-200 dark:border-slate-700 p-3 text-left bg-slate-50 dark:bg-slate-800/50 font-medium text-slate-900 dark:text-slate-100">
                           Estado
                         </th>
-                        <th className="border border-gray-200 p-2 text-left bg-gray-50 font-medium text-gray-700">
+                        <th className="border border-slate-200 dark:border-slate-700 p-3 text-left bg-slate-50 dark:bg-slate-800/50 font-medium text-slate-900 dark:text-slate-100">
                           Alíquota Interna
                         </th>
-                        <th className="border border-gray-200 p-2 text-left bg-gray-50 font-medium text-gray-700">
+                        <th className="border border-slate-200 dark:border-slate-700 p-3 text-left bg-slate-50 dark:bg-slate-800/50 font-medium text-slate-900 dark:text-slate-100">
                           Interestadual (Sul/Sudeste)
                         </th>
-                        <th className="border border-gray-200 p-2 text-left bg-gray-50 font-medium text-gray-700">
+                        <th className="border border-slate-200 dark:border-slate-700 p-3 text-left bg-slate-50 dark:bg-slate-800/50 font-medium text-slate-900 dark:text-slate-100">
                           Interestadual (Outros)
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       {dadosICMS.map((estado, index) => (
-                        <tr key={estado.id} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                          <td className="border border-gray-200 p-2 font-medium text-gray-700">{estado.estado}</td>
-                          <td className="border border-gray-200 p-2 text-gray-600">{estado.aliquotaInterna}%</td>
-                          <td className="border border-gray-200 p-2 text-gray-600">
+                        <tr
+                          key={estado.id}
+                          className={
+                            index % 2 === 0 ? "bg-white dark:bg-slate-800" : "bg-slate-50 dark:bg-slate-800/50"
+                          }
+                        >
+                          <td className="border border-slate-200 dark:border-slate-700 p-3 font-medium text-slate-900 dark:text-slate-100">
+                            {estado.estado}
+                          </td>
+                          <td className="border border-slate-200 dark:border-slate-700 p-3 text-slate-600 dark:text-slate-400">
+                            {estado.aliquotaInterna}%
+                          </td>
+                          <td className="border border-slate-200 dark:border-slate-700 p-3 text-slate-600 dark:text-slate-400">
                             {estado.aliquotaInterestadual.sul_sudeste}%
                           </td>
-                          <td className="border border-gray-200 p-2 text-gray-600">
+                          <td className="border border-slate-200 dark:border-slate-700 p-3 text-slate-600 dark:text-slate-400">
                             {estado.aliquotaInterestadual.outros}%
                           </td>
                         </tr>
@@ -582,32 +607,41 @@ const MapaICMS: React.FC = () => {
                     </tbody>
                   </table>
                 </div>
-              </TabPanel>
+              )}
 
-              <TabPanel id="especiais" className="p-4">
-                <div className="space-y-8">
+              {activeTab === "especiais" && (
+                <div className="space-y-10">
                   {produtosEspeciais.map((produto) => (
                     <div key={produto.nome}>
-                      <h3 className="font-medium text-gray-800 mb-3 pb-1 border-b">{produto.nome}</h3>
+                      <h3 className="font-medium text-slate-900 dark:text-slate-100 mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">
+                        {produto.nome}
+                      </h3>
                       <div className="overflow-x-auto">
                         <table className="w-full border-collapse">
                           <thead>
                             <tr>
-                              <th className="border border-gray-200 p-2 text-left bg-gray-50 font-medium text-gray-700">
+                              <th className="border border-slate-200 dark:border-slate-700 p-3 text-left bg-slate-50 dark:bg-slate-800/50 font-medium text-slate-900 dark:text-slate-100">
                                 Estado
                               </th>
-                              <th className="border border-gray-200 p-2 text-left bg-gray-50 font-medium text-gray-700">
+                              <th className="border border-slate-200 dark:border-slate-700 p-3 text-left bg-slate-50 dark:bg-slate-800/50 font-medium text-slate-900 dark:text-slate-100">
                                 Alíquota
                               </th>
                             </tr>
                           </thead>
                           <tbody>
                             {produto.estados.map((estado, index) => (
-                              <tr key={estado.id} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                                <td className="border border-gray-200 p-2 font-medium text-gray-700">
+                              <tr
+                                key={estado.id}
+                                className={
+                                  index % 2 === 0 ? "bg-white dark:bg-slate-800" : "bg-slate-50 dark:bg-slate-800/50"
+                                }
+                              >
+                                <td className="border border-slate-200 dark:border-slate-700 p-3 font-medium text-slate-900 dark:text-slate-100">
                                   {estado.estado}
                                 </td>
-                                <td className="border border-gray-200 p-2 text-gray-600">{estado.aliquota}%</td>
+                                <td className="border border-slate-200 dark:border-slate-700 p-3 text-slate-600 dark:text-slate-400">
+                                  {estado.aliquota}%
+                                </td>
                               </tr>
                             ))}
                           </tbody>
@@ -616,19 +650,19 @@ const MapaICMS: React.FC = () => {
                     </div>
                   ))}
                 </div>
-              </TabPanel>
-            </Tabs>
-          </CardContent>
-        </Card>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="mt-12">
-        <Card className="shadow-sm border-0">
-          <CardHeader className="bg-gray-50 border-b">
-            <CardTitle>Notas Importantes</CardTitle>
-          </CardHeader>
-          <CardContent className="p-4">
-            <div className="space-y-3 text-gray-600 text-sm">
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden">
+          <div className="p-6 border-b border-slate-200 dark:border-slate-700">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Notas Importantes</h2>
+          </div>
+          <div className="p-6">
+            <div className="space-y-4 text-slate-600 dark:text-slate-400 text-base">
               <p>
                 As alíquotas apresentadas neste mapa são aproximadas e podem sofrer alterações. Consulte sempre a
                 legislação estadual atualizada para obter informações precisas.
@@ -646,8 +680,8 @@ const MapaICMS: React.FC = () => {
                 alimentos da cesta básica, veículos, etc.
               </p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -32,56 +32,103 @@ const Calculadora: React.FC = () => {
   }
 
   return (
-    <div className="container-app">
-      <div className="flex justify-between items-center mb-6">
-        <h1>Calculadora de ICMS</h1>
-        <Button variant="outline" onClick={() => setShowHistorico(!showHistorico)}>
-          {showHistorico ? "Voltar à Calculadora" : "Ver Histórico"}
-        </Button>
+    <div className="min-h-screen py-16 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex justify-between items-center mb-10">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-vinho to-dourado bg-clip-text text-transparent">
+            Calculadora de ICMS
+          </h1>
+          <Button
+            variant="outline"
+            onClick={() => setShowHistorico(!showHistorico)}
+            className="px-6 py-3 rounded-xl border-vinho dark:border-dourado text-vinho dark:text-dourado hover:bg-vinho/10 dark:hover:bg-dourado/10"
+          >
+            {showHistorico ? "Voltar à Calculadora" : "Ver Histórico"}
+          </Button>
+        </div>
+
+        {showHistorico ? (
+          <Card className="shadow-2xl border-0 overflow-hidden">
+            <div className="h-2 bg-gradient-to-r from-vinho to-dourado"></div>
+            <CardHeader className="bg-slate-50 dark:bg-slate-800/50 p-8">
+              <CardTitle className="text-3xl text-vinho dark:text-dourado">Histórico de Cálculos</CardTitle>
+              <CardDescription className="text-lg text-slate-600 dark:text-slate-400 mt-2">
+                Selecione um cálculo para visualizar ou exportar
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="p-8">
+              <HistoricoCalculos onSelectCalculo={handleSelectCalculo} />
+            </CardContent>
+          </Card>
+        ) : (
+          <Card className="shadow-2xl border-0 overflow-hidden">
+            <div className="h-2 bg-gradient-to-r from-vinho to-dourado"></div>
+            <CardHeader className="bg-slate-50 dark:bg-slate-800/50 p-8">
+              <CardTitle className="text-3xl text-vinho dark:text-dourado">Calculadora de ICMS</CardTitle>
+              <CardDescription className="text-lg text-slate-600 dark:text-slate-400 mt-2">
+                Selecione o tipo de cálculo de ICMS e preencha os valores necessários
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent className="p-8">
+              <Tabs defaultTab={activeTab} onChange={handleTabChange}>
+                <TabList className="mb-8 flex border-b border-slate-200 dark:border-slate-700 overflow-x-auto">
+                  <Tab
+                    id="icms00"
+                    className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-vinho dark:data-[state=active]:border-dourado data-[state=active]:text-vinho dark:data-[state=active]:text-dourado"
+                  >
+                    ICMS 00
+                  </Tab>
+                  <Tab
+                    id="icms10"
+                    className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-vinho dark:data-[state=active]:border-dourado data-[state=active]:text-vinho dark:data-[state=active]:text-dourado"
+                  >
+                    ICMS 10
+                  </Tab>
+                  <Tab
+                    id="icms20"
+                    className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-vinho dark:data-[state=active]:border-dourado data-[state=active]:text-vinho dark:data-[state=active]:text-dourado"
+                  >
+                    ICMS 20
+                  </Tab>
+                  <Tab
+                    id="icms51"
+                    className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-vinho dark:data-[state=active]:border-dourado data-[state=active]:text-vinho dark:data-[state=active]:text-dourado"
+                  >
+                    ICMS 51
+                  </Tab>
+                  <Tab
+                    id="icms70"
+                    className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-vinho dark:data-[state=active]:border-dourado data-[state=active]:text-vinho dark:data-[state=active]:text-dourado"
+                  >
+                    ICMS 70
+                  </Tab>
+                </TabList>
+
+                <TabPanel id="icms00">
+                  <CalculadoraICMS00 storageDisponivel={storageDisponivel} />
+                </TabPanel>
+
+                <TabPanel id="icms10">
+                  <CalculadoraICMS10 storageDisponivel={storageDisponivel} />
+                </TabPanel>
+
+                <TabPanel id="icms20">
+                  <CalculadoraICMS20 storageDisponivel={storageDisponivel} />
+                </TabPanel>
+
+                <TabPanel id="icms51">
+                  <CalculadoraICMS51 storageDisponivel={storageDisponivel} />
+                </TabPanel>
+
+                <TabPanel id="icms70">
+                  <CalculadoraICMS70 storageDisponivel={storageDisponivel} />
+                </TabPanel>
+              </Tabs>
+            </CardContent>
+          </Card>
+        )}
       </div>
-
-      {showHistorico ? (
-        <HistoricoCalculos onSelectCalculo={handleSelectCalculo} />
-      ) : (
-        <Card className="max-w-4xl mx-auto">
-          <CardHeader>
-            <CardTitle>Calculadora de ICMS</CardTitle>
-            <CardDescription>Selecione o tipo de cálculo de ICMS e preencha os valores necessários.</CardDescription>
-          </CardHeader>
-
-          <CardContent>
-            <Tabs defaultTab={activeTab} onChange={handleTabChange}>
-              <TabList className="mb-6">
-                <Tab id="icms00">ICMS 00</Tab>
-                <Tab id="icms10">ICMS 10</Tab>
-                <Tab id="icms20">ICMS 20</Tab>
-                <Tab id="icms51">ICMS 51</Tab>
-                <Tab id="icms70">ICMS 70</Tab>
-              </TabList>
-
-              <TabPanel id="icms00">
-                <CalculadoraICMS00 storageDisponivel={storageDisponivel} />
-              </TabPanel>
-
-              <TabPanel id="icms10">
-                <CalculadoraICMS10 storageDisponivel={storageDisponivel} />
-              </TabPanel>
-
-              <TabPanel id="icms20">
-                <CalculadoraICMS20 storageDisponivel={storageDisponivel} />
-              </TabPanel>
-
-              <TabPanel id="icms51">
-                <CalculadoraICMS51 storageDisponivel={storageDisponivel} />
-              </TabPanel>
-
-              <TabPanel id="icms70">
-                <CalculadoraICMS70 storageDisponivel={storageDisponivel} />
-              </TabPanel>
-            </Tabs>
-          </CardContent>
-        </Card>
-      )}
     </div>
   )
 }
@@ -247,18 +294,19 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {showPdfPreview && calculoSalvo ? (
         <PdfPreview calculo={calculoSalvo} onClose={handleClosePdfPreview} />
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Input
               label="Valor do Produto (R$)"
               name="valorProduto"
               value={formData.valorProduto}
               onChange={handleChange}
               placeholder="0,00"
+              className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl p-4"
             />
 
             <Input
@@ -267,6 +315,7 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
               value={formData.valorFrete}
               onChange={handleChange}
               placeholder="0,00"
+              className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl p-4"
             />
 
             <Input
@@ -275,6 +324,7 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
               value={formData.valorSeguro}
               onChange={handleChange}
               placeholder="0,00"
+              className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl p-4"
             />
 
             <Input
@@ -283,6 +333,7 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
               value={formData.valorOutro}
               onChange={handleChange}
               placeholder="0,00"
+              className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl p-4"
             />
 
             <Input
@@ -291,6 +342,7 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
               value={formData.valorDesconto}
               onChange={handleChange}
               placeholder="0,00"
+              className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl p-4"
             />
 
             <Input
@@ -299,6 +351,7 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
               value={formData.aliquotaIcms}
               onChange={handleChange}
               placeholder="0,00"
+              className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl p-4"
             />
 
             <Input
@@ -307,49 +360,72 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
               value={formData.valorIpi}
               onChange={handleChange}
               placeholder="0,00"
+              className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl p-4"
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-end">
-            <Button variant="outline" onClick={limpar}>
+          <div className="flex flex-col sm:flex-row gap-4 justify-end">
+            <Button
+              variant="outline"
+              onClick={limpar}
+              className="px-6 py-3 rounded-xl border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700"
+            >
               Limpar
             </Button>
 
-            <Button onClick={calcular}>Calcular</Button>
+            <Button onClick={calcular} className="px-6 py-3 rounded-xl bg-vinho hover:bg-vinho-dark text-white">
+              Calcular
+            </Button>
           </div>
 
           {resultado && (
-            <div className="mt-6 p-4 bg-muted rounded-md">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-lg font-semibold">Resultado do Cálculo:</h3>
-                <div className="flex space-x-2">
-                  <Button variant="secondary" size="sm" onClick={handleGerarPdf}>
+            <div className="mt-8 p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+              <div className="flex justify-between items-start mb-6">
+                <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">Resultado do Cálculo:</h3>
+                <div className="flex space-x-3">
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    onClick={handleGerarPdf}
+                    className="px-4 py-2 rounded-lg bg-dourado hover:bg-dourado-dark text-slate-900"
+                  >
                     Gerar PDF
                   </Button>
 
                   {storageDisponivel && (
-                    <Button variant="outline" size="sm" onClick={salvar} isLoading={salvando} disabled={salvando}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={salvar}
+                      isLoading={salvando}
+                      disabled={salvando}
+                      className="px-4 py-2 rounded-lg border-vinho dark:border-dourado text-vinho dark:text-dourado hover:bg-vinho/10 dark:hover:bg-dourado/10"
+                    >
                       Salvar Cálculo
                     </Button>
                   )}
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-muted-foreground">Base de Cálculo do ICMS:</p>
-                  <p className="font-medium">{formatCurrency(resultado.baseIcms)}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Base de Cálculo do ICMS:</p>
+                  <p className="font-medium text-xl text-slate-900 dark:text-slate-100 mt-1">
+                    {formatCurrency(resultado.baseIcms)}
+                  </p>
                 </div>
 
-                <div>
-                  <p className="text-sm text-muted-foreground">Valor do ICMS:</p>
-                  <p className="text-xl font-bold text-primary">{formatCurrency(resultado.valorIcms)}</p>
+                <div className="bg-white dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700">
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Valor do ICMS:</p>
+                  <p className="text-2xl font-bold text-vinho dark:text-dourado mt-1">
+                    {formatCurrency(resultado.valorIcms)}
+                  </p>
                 </div>
               </div>
 
               {mensagemSalvo && (
                 <div
-                  className={`mt-4 p-2 rounded text-sm ${mensagemSalvo.includes("Erro") ? "bg-destructive/20 text-destructive" : "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"}`}
+                  className={`mt-6 p-4 rounded-lg text-sm ${mensagemSalvo.includes("Erro") ? "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400" : "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"}`}
                 >
                   {mensagemSalvo}
                 </div>
@@ -358,7 +434,7 @@ const CalculadoraICMS00: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
           )}
 
           {!storageDisponivel && resultado && (
-            <div className="mt-4 p-3 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 rounded-md text-sm">
+            <div className="mt-6 p-4 bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 rounded-lg text-sm">
               <p>
                 <strong>Nota:</strong> O armazenamento local (Local Storage) não está disponível no seu navegador. Você
                 ainda pode gerar um PDF deste cálculo para armazenamento permanente.
@@ -381,8 +457,10 @@ const CalculadoraICMS10: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
   // Código omitido para brevidade, seguiria o mesmo padrão
 
   return (
-    <div className="p-4 bg-muted rounded-md text-center">
-      <p>Implementação do ICMS 10 com exportação de PDF seguiria o mesmo padrão do ICMS 00.</p>
+    <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+      <p className="text-slate-600 dark:text-slate-400">
+        Implementação do ICMS 10 com exportação de PDF seguiria o mesmo padrão do ICMS 00.
+      </p>
     </div>
   )
 }
@@ -393,8 +471,10 @@ const CalculadoraICMS20: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
   // Código omitido para brevidade, seguiria o mesmo padrão
 
   return (
-    <div className="p-4 bg-muted rounded-md text-center">
-      <p>Implementação do ICMS 20 com exportação de PDF seguiria o mesmo padrão do ICMS 00.</p>
+    <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+      <p className="text-slate-600 dark:text-slate-400">
+        Implementação do ICMS 20 com exportação de PDF seguiria o mesmo padrão do ICMS 00.
+      </p>
     </div>
   )
 }
@@ -405,8 +485,10 @@ const CalculadoraICMS51: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
   // Código omitido para brevidade, seguiria o mesmo padrão
 
   return (
-    <div className="p-4 bg-muted rounded-md text-center">
-      <p>Implementação do ICMS 51 com exportação de PDF seguiria o mesmo padrão do ICMS 00.</p>
+    <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+      <p className="text-slate-600 dark:text-slate-400">
+        Implementação do ICMS 51 com exportação de PDF seguiria o mesmo padrão do ICMS 00.
+      </p>
     </div>
   )
 }
@@ -417,8 +499,10 @@ const CalculadoraICMS70: React.FC<CalculadoraProps> = ({ storageDisponivel }) =>
   // Código omitido para brevidade, seguiria o mesmo padrão
 
   return (
-    <div className="p-4 bg-muted rounded-md text-center">
-      <p>Implementação do ICMS 70 com exportação de PDF seguiria o mesmo padrão do ICMS 00.</p>
+    <div className="p-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 text-center">
+      <p className="text-slate-600 dark:text-slate-400">
+        Implementação do ICMS 70 com exportação de PDF seguiria o mesmo padrão do ICMS 00.
+      </p>
     </div>
   )
 }
