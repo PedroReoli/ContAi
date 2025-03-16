@@ -1,116 +1,141 @@
-import { Link } from "react-router-dom";
-import { Calculator, BookOpen, Mail, ArrowRight } from 'lucide-react';
+import type React from "react"
+import { Link } from "react-router-dom"
+import { Calculator, BookOpen, Map, Save, ArrowRight, CheckCircle2, Clock, FileText, BarChart3 } from "lucide-react"
 
-const Home = () => {
+const Home: React.FC = () => {
+  const features = [
+    {
+      title: "Calculadoras de ICMS",
+      description: "Calcule o ICMS para diferentes tipos de tributação de forma rápida e precisa.",
+      icon: <Calculator className="h-8 w-8 text-primary" />,
+      link: "/calculadora",
+    },
+    {
+      title: "Explicações Detalhadas",
+      description: "Entenda como funciona o ICMS com explicações claras e exemplos práticos.",
+      icon: <BookOpen className="h-8 w-8 text-primary" />,
+      link: "/explicacoes",
+    },
+    {
+      title: "Mapa de Alíquotas",
+      description: "Visualize as alíquotas de ICMS de cada estado brasileiro em um mapa interativo.",
+      icon: <Map className="h-8 w-8 text-primary" />,
+      link: "/mapa-icms",
+    },
+    {
+      title: "Armazenamento Local",
+      description: "Salve seus cálculos para consulta posterior diretamente no seu navegador.",
+      icon: <Save className="h-8 w-8 text-primary" />,
+      link: "/calculadora",
+    },
+  ]
+
   return (
-    <div className="space-y-12">
-      <section className="text-center max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-blue-500 dark:text-blue-400 mb-4">
-          Ajuda Fiscal
-        </h1>
-        <p className="text-xl text-text-light dark:text-gray-300">
-          Simplifique seus cálculos tributários e entenda melhor o ICMS com nossa ferramenta completa.
+    <div className="container-app">
+      {/* Hero Section */}
+      <section className="py-12 md:py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            Simplifique seus cálculos de ICMS
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            ContaAi é a ferramenta que profissionais e estudantes da área fiscal precisam para calcular e entender o
+            ICMS de forma simples e eficiente.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link to="/calculadora" className="btn-primary flex items-center justify-center gap-2">
+              <Calculator className="h-5 w-5" />
+              Começar a Calcular
+            </Link>
+            <Link to="/explicacoes" className="btn-secondary flex items-center justify-center gap-2">
+              <BookOpen className="h-5 w-5" />
+              Aprender sobre ICMS
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-12 md:py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Recursos do ContaAi</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
+            <Link
+              key={index}
+              to={feature.link}
+              className="card-icms flex flex-col items-center text-center hover:bg-accent/50 transition-colors group"
+            >
+              <div className="mb-4 transform transition-transform group-hover:scale-110">{feature.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground">{feature.description}</p>
+              <div className="mt-4 text-primary flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="mr-1">Saiba mais</span>
+                <ArrowRight className="h-4 w-4" />
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-12 md:py-16">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">Por que usar o ContaAi?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="flex items-start">
+              <CheckCircle2 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Cálculos Precisos</h3>
+                <p className="text-muted-foreground">
+                  Algoritmos atualizados conforme a legislação vigente para garantir resultados confiáveis.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start">
+              <Clock className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Economia de Tempo</h3>
+                <p className="text-muted-foreground">
+                  Reduza o tempo gasto em cálculos manuais e evite erros com nossa calculadora automatizada.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start">
+              <FileText className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Documentação Completa</h3>
+                <p className="text-muted-foreground">
+                  Gere relatórios em PDF para documentar seus cálculos e compartilhar com sua equipe.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start">
+              <BarChart3 className="h-6 w-6 text-primary mr-3 mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Análise Visual</h3>
+                <p className="text-muted-foreground">
+                  Visualize as alíquotas e diferenças regionais através de mapas e gráficos interativos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-12 md:py-16 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 text-center">
+        <h2 className="text-3xl font-bold mb-6">Pronto para simplificar seus cálculos fiscais?</h2>
+        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Comece a usar o ContaAi hoje mesmo e economize tempo com cálculos precisos de ICMS.
         </p>
-      </section>
-
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="card p-8 hover-lift">
-          <div className="flex flex-col items-center text-center">
-            <div className="icon-bg mb-4">
-              <Calculator className="h-8 w-8" />
-            </div>
-            <h2 className="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">Calculadoras</h2>
-            <p className="text-text-light dark:text-gray-300 mb-4">
-              Calcule ICMS para diferentes situações tributárias de forma rápida e precisa.
-            </p>
-            <Link to="/calculadoras" className="btn-primary inline-flex items-center">
-              Acessar <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-
-        <div className="card p-8 hover-lift">
-          <div className="flex flex-col items-center text-center">
-            <div className="icon-bg mb-4">
-              <BookOpen className="h-8 w-8" />
-            </div>
-            <h2 className="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">Explicações</h2>
-            <p className="text-text-light dark:text-gray-300 mb-4">
-              Entenda os conceitos de ICMS, CST, CSOSN e as alíquotas por estado.
-            </p>
-            <Link to="/explicacoes" className="btn-primary inline-flex items-center">
-              Acessar <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-
-        <div className="card p-8 hover-lift">
-          <div className="flex flex-col items-center text-center">
-            <div className="icon-bg mb-4">
-              <Mail className="h-8 w-8" />
-            </div>
-            <h2 className="text-xl font-bold mb-2 text-blue-600 dark:text-blue-400">Contato</h2>
-            <p className="text-text-light dark:text-gray-300 mb-4">
-              Precisa de ajuda? Entre em contato conosco para esclarecer suas dúvidas.
-            </p>
-            <Link to="/contato" className="btn-primary inline-flex items-center">
-              Acessar <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="card p-8">
-        <h2 className="section-title">Por que usar o Ajuda Fiscal?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="flex items-start">
-            <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full mr-4">
-              <Calculator className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-blue-600 dark:text-blue-400">Cálculos Precisos</h3>
-              <p className="text-text-light dark:text-gray-300">
-                Nossas calculadoras seguem rigorosamente a legislação tributária brasileira, garantindo resultados precisos para suas operações fiscais.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full mr-4">
-              <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-blue-600 dark:text-blue-400">Explicações Claras</h3>
-              <p className="text-text-light dark:text-gray-300">
-                Entenda facilmente conceitos complexos com nossas explicações detalhadas sobre ICMS, CST e CSOSN.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full mr-4">
-              <ArrowRight className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-blue-600 dark:text-blue-400">Atualizado</h3>
-              <p className="text-text-light dark:text-gray-300">
-                Mantemos nossas informações sempre atualizadas conforme as mudanças na legislação tributária.
-              </p>
-            </div>
-          </div>
-          <div className="flex items-start">
-            <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full mr-4">
-              <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-blue-600 dark:text-blue-400">Fácil de Usar</h3>
-              <p className="text-text-light dark:text-gray-300">
-                Interface intuitiva que permite realizar cálculos complexos com poucos cliques.
-              </p>
-            </div>
-          </div>
-        </div>
+        <Link to="/calculadora" className="btn-primary flex items-center justify-center gap-2 mx-auto w-fit">
+          <Calculator className="h-5 w-5" />
+          Experimentar Agora
+        </Link>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
+
