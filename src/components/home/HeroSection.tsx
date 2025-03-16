@@ -56,7 +56,7 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              ContaAi é a ferramenta que profissionais e estudantes da área fiscal precisam para calcular e entender o
+              ContaAí é a ferramenta que profissionais e estudantes da área fiscal precisam para calcular e entender o
               ICMS de forma simples e eficiente.
             </motion.p>
 

@@ -19,7 +19,7 @@ const CTASection: React.FC = () => {
           Pronto para simplificar seus cálculos fiscais?
         </h2>
         <p className="text-lg md:text-xl text-txt-secondary dark:text-txt-muted mb-12 leading-relaxed">
-          Comece a usar o ContaAi hoje mesmo e economize tempo com cálculos precisos de ICMS. Sem instalações, sem
+          Comece a usar o ContaAí hoje mesmo e economize tempo com cálculos precisos de ICMS. Sem instalações, sem
           complicações.
         </p>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>

@@ -62,7 +62,7 @@ const FeaturesSection: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="section-title text-txt-primary dark:text-txt-light">
-            <span className="text-primary dark:text-secondary">Recursos do ContaAi</span>
+            <span className="text-primary dark:text-secondary">Recursos do ContaAí</span>
             <span className="section-title-underline"></span>
           </h2>
           <p className="text-txt-secondary dark:text-txt-muted max-w-2xl mx-auto mt-6 text-lg">
