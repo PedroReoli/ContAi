@@ -1,29 +1,64 @@
-# ContaAi - Calculadora de ICMS
-
-<p align="center">
+<div align="center">
   <img src="https://placeholder.svg?height=200&width=200" alt="ContaAi Logo" width="200" height="200">
-</p>
+  <h1>ContaAi - Calculadora de ICMS</h1>
+  <p><strong>Simplificando o cálculo de ICMS para profissionais e estudantes da área fiscal</strong></p>
+  
+  [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+  [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
+</div>
 
 <p align="center">
-  <strong>Simplificando o cálculo de ICMS para profissionais e estudantes da área fiscal</strong>
+  <a href="#-visão-geral">Visão Geral</a> •
+  <a href="#-funcionalidades">Funcionalidades</a> •
+  <a href="#-estrutura-do-projeto">Estrutura</a> •
+  <a href="#-cálculos-de-icms">Cálculos</a> •
+  <a href="#-tecnologias-utilizadas">Tecnologias</a> •
+  <a href="#-como-executar">Execução</a> •
+  <a href="#-roadmap">Roadmap</a> •
+  <a href="#-contribuição">Contribuição</a> •
+  <a href="#-contato">Contato</a> •
+  <a href="#-licença">Licença</a>
 </p>
 
-<p align="center">
-  <a href="#visão-geral">Visão Geral</a> •
-  <a href="#funcionalidades">Funcionalidades</a> •
-  <a href="#estrutura-do-projeto">Estrutura do Projeto</a> •
-  <a href="#cálculos-de-icms">Cálculos de ICMS</a> •
-  <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a> •
-  <a href="#como-executar">Como Executar</a> •
-  <a href="#roadmap">Roadmap</a> •
-  <a href="#licença">Licença</a>
-</p>
+---
 
-## Visão Geral
+## 📋 Visão Geral
 
-O **ContaAi** é um aplicativo web desenvolvido com Vite, React e TailwindCSS, voltado para cálculos e explicações sobre o ICMS (Imposto sobre Circulação de Mercadorias e Serviços) no Brasil. Nosso objetivo é simplificar o entendimento e o cálculo deste imposto complexo, fornecendo uma ferramenta intuitiva e educativa para profissionais e estudantes da área fiscal.
+<img align="right" width="300" src="https://placeholder.svg?height=200&width=300" alt="ICMS Illustration">
 
-## Funcionalidades
+O **ContaAi** é um aplicativo web desenvolvido com Vite, React e TailwindCSS, voltado para cálculos e explicações sobre o ICMS (Imposto sobre Circulação de Mercadorias e Serviços) no Brasil. 
+
+Nossa missão é simplificar o entendimento e o cálculo deste imposto complexo, fornecendo uma ferramenta intuitiva e educativa para profissionais e estudantes da área fiscal.
+
+O ICMS é um dos tributos mais complexos do sistema tributário brasileiro, com diferentes alíquotas, regimes especiais e particularidades por estado. O ContaAi surge como uma solução para tornar esse universo mais acessível.
+
+<br clear="right"/>
+
+---
+
+## ✨ Funcionalidades
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="33%">
+        <img width="100" src="https://placeholder.svg?height=100&width=100" alt="Calculator Icon"><br>
+        <b>Calculadoras Interativas</b>
+      </td>
+      <td align="center" width="33%">
+        <img width="100" src="https://placeholder.svg?height=100&width=100" alt="Map Icon"><br>
+        <b>Mapa Interativo</b>
+      </td>
+      <td align="center" width="33%">
+        <img width="100" src="https://placeholder.svg?height=100&width=100" alt="Report Icon"><br>
+        <b>Relatórios Detalhados</b>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ### 🧮 Calculadoras Interativas
 - **ICMS 00 (Cálculo Padrão)**: Para operações sem reduções ou substituições tributárias
@@ -52,161 +87,6 @@ O **ContaAi** é um aplicativo web desenvolvido com Vite, React e TailwindCSS, v
 - Salve seus cálculos para consulta posterior
 - Histórico de operações realizadas
 
-## Estrutura do Projeto
-
-\`\`\`
-📦 ContaAi
- ┣ 📂 src
- ┃ ┣ 📂 components             # Componentes reutilizáveis
- ┃ ┃ ┣ 📜 InputField.tsx       # Campo de entrada reutilizável
- ┃ ┃ ┣ 📜 Layout.tsx           # Estrutura base do layout
- ┃ ┣ 📂 components/ui          # Componentes visuais genéricos
- ┃ ┃ ┣ 📜 Button.tsx           # Botão estilizado
- ┃ ┃ ┣ 📜 Card.tsx             # Componente de card
- ┃ ┃ ┣ 📜 Input.tsx            # Campo de input genérico
- ┃ ┃ ┣ 📜 Tabs.tsx             # Abas de navegação
- ┃ ┣ 📂 contexts
- ┃ ┃ ┣ 📜 ThemeContext.tsx     # Contexto para gerenciamento de tema
- ┃ ┣ 📂 lib
- ┃ ┃ ┣ 📜 utils.ts             # Funções auxiliares globais
- ┃ ┣ 📂 pages
- ┃ ┃ ┣ 📜 Calculadora.tsx      # Página principal da calculadora de ICMS
- ┃ ┃ ┣ 📜 Explicacoes.tsx      # Página com explicações sobre ICMS
- ┃ ┃ ┣ 📜 Home.tsx             # Página inicial
- ┃ ┃ ┣ 📜 MapaICMS.tsx         # Mapa interativo das alíquotas de ICMS por estado
- ┃ ┣ 📂 styles
- ┃ ┃ ┣ 📜 globals.css          # Estilos globais da aplicação
- ┃ ┣ 📂 utils
- ┃ ┃ ┣ 📜 calculadoraICMS.ts   # Funções de cálculo de ICMS
- ┃ ┃ ┣ 📜 storage.ts           # Funções para salvar e recuperar cálculos do Local Storage
- ┣ 📜 App.tsx                  # Componente raiz da aplicação
- ┣ 📜 main.tsx                 # Ponto de entrada do React
- ┣ 📜 index.html               # Estrutura HTML inicial
- ┣ 📜 README.md                # Documentação do projeto
- ┣ 📜 tailwind.config.ts       # Configuração do TailwindCSS
-\`\`\`
-
-## Cálculos de ICMS
-
-### ICMS 00 (Cálculo Padrão)
-Utilizado em operações normais, sem reduções ou substituições tributárias.
-
-**Fórmula:**
-\`\`\`
-Valor do ICMS = Base de Cálculo × Alíquota
-\`\`\`
-
-**Exemplo:**
-Para uma mercadoria com valor de R$ 1.000,00 e alíquota de 18%:
-\`\`\`
-Valor do ICMS = R$ 1.000,00 × 18% = R$ 180,00
-\`\`\`
-
-### ICMS 10 (Substituição Tributária)
-Utilizado quando o ICMS é recolhido antecipadamente pelo contribuinte substituto.
-
-**Fórmula:**
-\`\`\`
-ICMS próprio = Base de Cálculo × Alíquota interna
-ICMS-ST = (Base de Cálculo ST × Alíquota ST) - ICMS próprio
-\`\`\`
-
-### ICMS 20 (Base de Cálculo Reduzida)
-Utilizado quando há redução na base de cálculo do imposto.
-
-**Fórmula:**
-\`\`\`
-Base de Cálculo Reduzida = Base de Cálculo × (1 - Percentual de Redução)
-Valor do ICMS = Base de Cálculo Reduzida × Alíquota
-\`\`\`
-
-### ICMS 51 (Diferimento Parcial)
-Utilizado quando parte do imposto é postergada para pagamento futuro.
-
-**Fórmula:**
-\`\`\`
-Valor do ICMS = Base de Cálculo × Alíquota × (1 - Percentual de Diferimento)
-\`\`\`
-
-## Tecnologias Utilizadas
-
-- **[Vite](https://vitejs.dev/)**: Build tool e dev server ultrarrápido
-- **[React](https://reactjs.org/)**: Biblioteca JavaScript para construção de interfaces
-- **[TypeScript](https://www.typescriptlang.org/)**: Superset tipado de JavaScript
-- **[TailwindCSS](https://tailwindcss.com/)**: Framework CSS utilitário
-- **[React Router](https://reactrouter.com/)**: Roteamento para aplicações React
-- **[React Simple Maps](https://www.react-simple-maps.io/)**: Biblioteca para mapas interativos
-- **[jsPDF](https://github.com/MrRio/jsPDF)**: Geração de documentos PDF no cliente
-
-## Como Executar
-
-### Pré-requisitos
-- Node.js (versão 16 ou superior)
-- npm ou yarn
-
-### Instalação
-
-1. Clone o repositório
-   \`\`\`bash
-   git clone https://github.com/PedroReoli/ContAi.git
-   cd contaai
-   \`\`\`
-
-2. Instale as dependências
-   \`\`\`bash
-   npm install
-   # ou
-   yarn
-   \`\`\`
-
-3. Execute o projeto em modo de desenvolvimento
-   \`\`\`bash
-   npm run dev
-   # ou
-   yarn dev
-   \`\`\`
-
-4. Acesse o aplicativo em seu navegador
-   \`\`\`
-   http://localhost:5173
-   \`\`\`
-
-### Build para Produção
-
-\`\`\`bash
-npm run build
-# ou
-yarn build
-\`\`\`
-
-## Roadmap
-
-- [ ] Sprint 1: Configuração inicial e estruturação do projeto
-- [ ] Sprint 2: Implementação das calculadoras de ICMS
-- [ ] Sprint 3: Desenvolvimento do mapa interativo
-- [ ] Sprint 4: Sistema de armazenamento local
-- [ ] Sprint 5: Exportação de relatórios em PDF
-- [x] Sprint 6: Comparador de ICMS
-- [ ] Sprint 7: Testes e otimizações
-
-## Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
-
-1. Faça um fork do projeto
-2. Crie sua branch de feature (`git checkout -b feature/nova-funcionalidade`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
-4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abra um Pull Request
-
-
-## Contato
-
-Para dúvidas ou sugestões, entre em contato através de [pedrosousa2160@gmail.com](mailto:pedrosousa2160@gmail.com).
-
 ---
 
-<p align="center">
-  Desenvolvido com ❤️ para simplificar a vida fiscal brasileira
-</p>
-
+## 🏗️ Estrutura do Projeto

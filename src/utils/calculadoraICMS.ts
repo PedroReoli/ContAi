@@ -11,7 +11,6 @@ export function calcularBaseIcms(
   valorIpi = 0,
 ) {
   const baseIcms = valorProduto + valorFrete + valorSeguro + valorOutro - valorDesconto + valorIpi
-
   return Number(baseIcms.toFixed(2))
 }
 
@@ -25,7 +24,6 @@ export function calcularIcms00(
   valorIpi = 0,
 ) {
   const baseIcms = calcularBaseIcms(valorProduto, valorFrete, valorSeguro, valorOutro, valorDesconto, valorIpi)
-
   const icms00 = baseIcms * (aliquotaIcms / 100)
   return Number(icms00.toFixed(2))
 }
@@ -52,7 +50,6 @@ export function calcularValorIcmsProprio(
   aliquotaIcmsProprio: number,
 ) {
   const baseIcmsProprio = calcularBaseIcmsProprio(valorProduto, valorFrete, valorSeguro, valorOutro, valorDesconto)
-
   const valorIcmsProprio = baseIcmsProprio * (aliquotaIcmsProprio / 100)
   return Number(valorIcmsProprio.toFixed(2))
 }
@@ -67,7 +64,6 @@ export function calcularBaseIcmsST(
   valorIpi = 0,
 ) {
   const baseIcmsProprio = calcularBaseIcmsProprio(valorProduto, valorFrete, valorSeguro, valorOutro, valorDesconto)
-
   const baseIcmsST = (baseIcmsProprio + valorIpi) * (1 + percentualMVA / 100)
   return Number(baseIcmsST.toFixed(2))
 }
@@ -118,7 +114,6 @@ export function calcularBaseIcmsReduzida(
   valorIpi = 0,
 ) {
   const baseIcms = valorProduto + valorFrete + valorSeguro + valorOutro - valorDesconto + valorIpi
-
   const baseIcmsReduzida = baseIcms - (percentualReducao / 100) * baseIcms
   return Number(baseIcmsReduzida.toFixed(2))
 }
@@ -159,7 +154,6 @@ export function calcularIcmsOperacao(
   valorIpi = 0,
 ) {
   const baseIcms = calcularBaseIcms(valorProduto, valorFrete, valorSeguro, valorOutro, valorDesconto, valorIpi)
-
   const icmsOperacao = baseIcms * (aliquotaIcms / 100)
   return Number(icmsOperacao.toFixed(2))
 }
@@ -236,7 +230,6 @@ export function calcularBaseIcmsSTReduzida(
   valorIpi = 0,
 ) {
   const baseIcmsProprio = calcularBaseIcmsProprio(valorProduto, valorFrete, valorSeguro, valorOutro, valorDesconto)
-
   const baseIcmsST = (baseIcmsProprio + valorIpi) * (1 + percentualMVA / 100)
   const baseIcmsSTReduzida = baseIcmsST - (percentualReducaoST / 100) * baseIcmsST
   return Number(baseIcmsSTReduzida.toFixed(2))
@@ -251,8 +244,8 @@ export function calcularIcms70(
   percentualMVA: number,
   aliquotaIcmsProprio: number,
   aliquotaIcmsST: number,
-  percentualReducao = 0,
-  percentualReducaoST = 0,
+  percentualReducao: number,
+  percentualReducaoST: number,
   valorIpi = 0,
 ) {
   const baseIcmsST =
@@ -269,14 +262,19 @@ export function calcularIcms70(
         )
       : calcularBaseIcmsST(valorProduto, valorFrete, valorSeguro, valorOutro, valorDesconto, percentualMVA, valorIpi)
 
-  const valorIcmsProprio = calcularValorIcmsProprio(
-    valorProduto,
-    valorFrete,
-    valorSeguro,
-    valorOutro,
-    valorDesconto,
-    aliquotaIcmsProprio,
-  )
+  // Usar o percentualReducao para calcular o ICMS próprio com base reduzida, se aplicável
+  const valorIcmsProprio =
+    percentualReducao > 0
+      ? calcularIcms20(
+          valorProduto,
+          valorFrete,
+          valorSeguro,
+          valorOutro,
+          valorDesconto,
+          percentualReducao,
+          aliquotaIcmsProprio,
+        )
+      : calcularValorIcmsProprio(valorProduto, valorFrete, valorSeguro, valorOutro, valorDesconto, aliquotaIcmsProprio)
 
   const icms70 = baseIcmsST * (aliquotaIcmsST / 100) - valorIcmsProprio
   return Number(icms70.toFixed(2))
