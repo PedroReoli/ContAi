@@ -8,6 +8,7 @@ import CalculadoraICMS20 from "@/components/calculadora/CalculadoraICMS20"
 import CalculadoraICMS51 from "@/components/calculadora/CalculadoraICMS51"
 import CalculadoraICMS70 from "@/components/calculadora/CalculadoraICMS70"
 import { isLocalStorageDisponivel } from "@/utils/storage"
+import { motion } from "framer-motion"
 
 const Calculadora: React.FC = () => {
   const [tipoICMS, setTipoICMS] = useState<string>("ICMS00")
@@ -34,60 +35,78 @@ const Calculadora: React.FC = () => {
     }
   }
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  }
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center text-gray-900">Calculadora de ICMS</h1>
+    <div className="min-h-screen py-12 bg-gradient-to-b from-bg-light to-bg-medium dark:from-bg-dark dark:to-bg-darker">
+      <div className="container mx-auto px-4">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Calculadora de ICMS</h1>
+          <p className="text-txt-secondary dark:text-txt-muted text-lg max-w-2xl mx-auto">
+            Calcule facilmente os valores de ICMS para diferentes cenários fiscais
+          </p>
+        </motion.div>
 
-      <div className="mb-8">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Selecione o tipo de ICMS:</label>
-        <div className="flex flex-wrap gap-2">
-          <button
-            onClick={() => setTipoICMS("ICMS00")}
-            className={`px-4 py-2 rounded-md ${
-              tipoICMS === "ICMS00" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-            }`}
-          >
-            ICMS 00
-          </button>
-          <button
-            onClick={() => setTipoICMS("ICMS10")}
-            className={`px-4 py-2 rounded-md ${
-              tipoICMS === "ICMS10" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-            }`}
-          >
-            ICMS 10
-          </button>
-          <button
-            onClick={() => setTipoICMS("ICMS20")}
-            className={`px-4 py-2 rounded-md ${
-              tipoICMS === "ICMS20" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-            }`}
-          >
-            ICMS 20
-          </button>
-          <button
-            onClick={() => setTipoICMS("ICMS51")}
-            className={`px-4 py-2 rounded-md ${
-              tipoICMS === "ICMS51" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-            }`}
-          >
-            ICMS 51
-          </button>
-          <button
-            onClick={() => setTipoICMS("ICMS70")}
-            className={`px-4 py-2 rounded-md ${
-              tipoICMS === "ICMS70" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-            }`}
-          >
-            ICMS 70
-          </button>
-        </div>
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mb-8 bg-white/80 dark:bg-bg-darker/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-bg-medium/20 dark:border-bg-dark/30"
+        >
+          <h2 className="text-xl font-semibold mb-4">Selecione o tipo de ICMS:</h2>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { id: "ICMS00", label: "ICMS 00" },
+              { id: "ICMS10", label: "ICMS 10" },
+              { id: "ICMS20", label: "ICMS 20" },
+              { id: "ICMS51", label: "ICMS 51" },
+              { id: "ICMS70", label: "ICMS 70" }
+            ].map((tipo) => (
+              <motion.button
+                key={tipo.id}
+                variants={item}
+                onClick={() => setTipoICMS(tipo.id)}
+                className={`px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  tipoICMS === tipo.id 
+                    ? "bg-gradient-primary text-txt-light shadow-md hover:shadow-lg transform hover:-translate-y-1" 
+                    : "bg-bg-medium dark:bg-bg-dark text-txt-secondary dark:text-txt-muted hover:bg-bg-medium/70 dark:hover:bg-bg-dark/70 hover:text-txt-primary dark:hover:text-txt-light"
+                }`}
+              >
+                {tipo.label}
+              </motion.button>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="bg-white/90 dark:bg-bg-darker/90 backdrop-blur-sm rounded-xl shadow-xl border border-bg-medium/20 dark:border-bg-dark/30 p-6 md:p-8"
+        >
+          {renderCalculadora()}
+        </motion.div>
       </div>
-
-      {renderCalculadora()}
     </div>
   )
 }
 
 export default Calculadora
-
