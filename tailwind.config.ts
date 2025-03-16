@@ -1,5 +1,7 @@
-import type { Config } from "tailwindcss"
-const config: Config = {
+/** @type {import('tailwindcss').Config} */
+const tailwindcssAnimate = require("tailwindcss-animate")
+
+module.exports = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -9,6 +11,13 @@ const config: Config = {
     "*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -44,55 +53,54 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Cores primárias
-        vinho: {
-          DEFAULT: "#4B2C2C", // Vinho Profundo
-          light: "#6D4141",
-          dark: "#3A2222",
-        },
-        // Cores secundárias
-        dourado: {
-          DEFAULT: "#B59B6A", // Dourado Suave
-          light: "#C9B285",
-          dark: "#9A8359",
-        },
+
         // Cores de fundo
-        bg: {
-          light: "#F4F4F4", // Cinza Claro Neutro
-          medium: "#D9D9D9", // Cinza Médio
-          dark: "#121212", // Preto Grafite
-          darker: "#1E1E1E", // Cinza Chumbo
-        },
+        "bg-light": "rgb(var(--background-light))",
+        "bg-medium": "rgb(var(--background-medium))",
+        "bg-dark": "rgb(var(--background-dark))",
+        "bg-darker": "rgb(var(--background-darker))",
+
         // Cores de texto
-        txt: {
-          primary: "#222222", // Preto para texto principal (modo claro)
-          secondary: "#555555", // Cinza escuro para texto secundário (modo claro)
-          light: "#FFFFFF", // Branco para texto (modo escuro)
-          muted: "#B0B0B0", // Cinza Médio para texto secundário
-          accent: "#B59B6A", // Dourado para texto de destaque
-        },
-        // Cores de estado
-        state: {
-          error: "#8B0000", // Vermelho Escuro
-          success: "#2F4F4F", // Verde Militar
-          warning: "#CDAA7D", // Bronze
-        },
-        // Cores para botões
-        btn: {
-          primary: "#222222", // Preto Fosco
-          secondary: "#3A3A3A", // Cinza Aço
-          hover: "#4B2C2C", // Vinho Profundo
-        },
+        "txt-primary": "rgb(var(--text-primary))",
+        "txt-secondary": "rgb(var(--text-secondary))",
+        "txt-light": "rgb(var(--text-light))",
+        "txt-muted": "rgb(var(--text-muted))",
+        "txt-accent": "rgb(var(--text-accent))",
+
+        // Estados
+        "state-error": "rgb(var(--state-error))",
+        "state-success": "rgb(var(--state-success))",
+        "state-warning": "rgb(var(--state-warning))",
+        "state-info": "rgb(var(--state-info))",
+
+        // Botões
+        "btn-primary": "rgb(var(--button-primary))",
+        "btn-secondary": "rgb(var(--button-secondary))",
+        "btn-hover": "rgb(var(--button-hover))",
+
+        // Legado - manter para compatibilidade
+        vinho: "rgb(var(--primary))",
+        dourado: "rgb(var(--secondary))",
+        "vinho-dark": "rgb(var(--button-hover))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        glow: "0 0 10px rgba(var(--shadow-color), var(--shadow-strength))",
+      },
+      backgroundImage: {
+        "gradient-primary": "var(--gradient-primary)",
+        "gradient-secondary": "var(--gradient-secondary)",
+        "gradient-accent": "var(--gradient-accent)",
+      },
+      animation: {
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 }
-
-export default config
 

@@ -3,84 +3,124 @@
 @tailwind utilities;
 
 :root {
-  --primary: 75, 44, 44;
-  --secondary: 181, 155, 106;
-  --background-light: 244, 244, 244;
-  --background-medium: 217, 217, 217;
-  --background-dark: 18, 18, 18;
-  --background-darker: 30, 30, 30;
-  --text-primary: 34, 34, 34;
-  --text-secondary: 85, 85, 85;
+  /* Cores principais - mais vibrantes */
+  --primary: 0, 99, 177; /* Azul profundo vibrante */
+  --secondary: 0, 184, 148; /* Verde turquesa vibrante */
+  
+  /* Cores de fundo */
+  --background-light: 248, 250, 252;
+  --background-medium: 235, 240, 245;
+  --background-dark: 22, 28, 36;
+  --background-darker: 16, 20, 26;
+  
+  /* Cores de texto */
+  --text-primary: 30, 36, 44;
+  --text-secondary: 75, 85, 99;
   --text-light: 255, 255, 255;
-  --text-muted: 176, 176, 176;
-  --text-accent: 181, 155, 106;
-  --state-error: 139, 0, 0;
-  --state-success: 47, 79, 79;
-  --state-warning: 205, 170, 125;
-  --button-primary: 34, 34, 34;
-  --button-secondary: 58, 58, 58;
-  --button-hover: 75, 44, 44;
-  --radius: 0.5rem;
+  --text-muted: 160, 174, 192;
+  --text-accent: 0, 184, 148; /* Verde turquesa */
+  
+  /* Estados */
+  --state-error: 235, 59, 90; /* Vermelho vibrante */
+  --state-success: 38, 222, 129; /* Verde vibrante */
+  --state-warning: 247, 159, 31; /* Laranja vibrante */
+  --state-info: 85, 166, 255; /* Azul claro */
+  
+  /* Botões */
+  --button-primary: 0, 99, 177; /* Azul profundo */
+  --button-secondary: 0, 184, 148; /* Verde turquesa */
+  --button-hover: 0, 119, 197; /* Azul mais escuro */
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, rgb(0, 99, 177) 0%, rgb(0, 119, 197) 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(0, 184, 148) 0%, rgb(0, 148, 118) 100%);
+  --gradient-accent: linear-gradient(135deg, rgb(0, 99, 177) 0%, rgb(0, 184, 148) 100%);
+  
+  /* Outros */
+  --radius: 0.75rem;
+  --shadow-color: 0, 99, 177;
+  --shadow-strength: 5%;
 }
 
 .dark {
   --background: var(--background-dark);
   --foreground: var(--text-light);
+  
+  /* Ajustes específicos para o tema escuro */
+  --button-primary: 41, 121, 255; /* Azul mais claro no modo escuro */
+  --button-secondary: 38, 222, 129; /* Verde mais claro no modo escuro */
+  --shadow-strength: 10%;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-bg-light text-txt-primary;
+    background-image: 
+      radial-gradient(circle at 100% 100%, rgba(var(--primary), 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 0% 0%, rgba(var(--secondary), 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
   }
 
   .dark body {
     @apply bg-bg-dark text-txt-light;
+    background-image: 
+      radial-gradient(circle at 100% 100%, rgba(var(--primary), 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 0% 0%, rgba(var(--secondary), 0.1) 0%, transparent 50%);
+    background-attachment: fixed;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-medium;
+    background: linear-gradient(90deg, rgb(var(--primary)) 0%, rgb(var(--secondary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    background: linear-gradient(90deg, rgb(41, 121, 255) 0%, rgb(38, 222, 129) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   h1 {
-    @apply text-3xl;
+    @apply text-3xl md:text-4xl lg:text-5xl;
   }
 
   h2 {
-    @apply text-2xl;
+    @apply text-2xl md:text-3xl;
   }
 
   h3 {
-    @apply text-xl;
+    @apply text-xl md:text-2xl;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-btn-primary text-txt-light hover:bg-vinho transition-colors px-4 py-2 rounded font-medium;
+    @apply bg-gradient-to-r from-primary to-primary/90 text-txt-light hover:from-primary/90 hover:to-primary transition-all px-4 py-2 rounded-lg font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-secondary {
-    @apply bg-btn-secondary text-txt-light hover:bg-vinho transition-colors px-4 py-2 rounded font-medium;
+    @apply bg-gradient-to-r from-secondary to-secondary/90 text-txt-light hover:from-secondary/90 hover:to-secondary transition-all px-4 py-2 rounded-lg font-medium shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .btn-outline {
-    @apply border border-btn-primary text-btn-primary hover:bg-btn-primary hover:text-txt-light transition-colors px-4 py-2 rounded font-medium;
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-txt-light transition-all px-4 py-2 rounded-lg font-medium hover:-translate-y-0.5 active:translate-y-0;
   }
 
   .card {
-    @apply bg-white dark:bg-bg-darker rounded-lg shadow-md overflow-hidden;
+    @apply bg-white/90 dark:bg-bg-darker/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-bg-medium/20 dark:border-bg-dark/30 hover:shadow-xl transition-all;
   }
 
   .card-header {
-    @apply p-4 border-b border-bg-medium dark:border-bg-dark;
+    @apply p-5 border-b border-bg-medium/30 dark:border-bg-dark/50;
   }
 
   .card-title {
@@ -92,15 +132,53 @@
   }
 
   .card-content {
-    @apply p-4;
+    @apply p-5;
   }
 
   .tab-active {
-    @apply border-b-2 border-vinho dark:border-dourado text-vinho dark:text-dourado;
+    @apply border-b-2 border-primary dark:border-secondary text-primary dark:text-secondary font-medium;
   }
 
   .tab-inactive {
-    @apply text-txt-secondary dark:text-txt-muted hover:text-txt-primary dark:hover:text-txt-light;
+    @apply text-txt-secondary dark:text-txt-muted hover:text-txt-primary dark:hover:text-txt-light transition-colors;
+  }
+  
+  /* Novas classes para efeitos de glassmorphism */
+  .glass {
+    @apply bg-white/70 dark:bg-bg-darker/70 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+  
+  /* Novas classes para badges */
+  .badge {
+    @apply px-2 py-0.5 text-xs font-medium rounded-full;
+  }
+  
+  .badge-primary {
+    @apply bg-primary/20 text-primary dark:bg-primary/30 dark:text-primary/90;
+  }
+  
+  .badge-secondary {
+    @apply bg-secondary/20 text-secondary dark:bg-secondary/30 dark:text-secondary/90;
+  }
+  
+  /* Novas classes para alertas */
+  .alert {
+    @apply p-4 rounded-lg border;
+  }
+  
+  .alert-error {
+    @apply bg-state-error/10 border-state-error/20 text-state-error;
+  }
+  
+  .alert-success {
+    @apply bg-state-success/10 border-state-success/20 text-state-success;
+  }
+  
+  .alert-warning {
+    @apply bg-state-warning/10 border-state-warning/20 text-state-warning;
+  }
+  
+  .alert-info {
+    @apply bg-state-info/10 border-state-info/20 text-state-info;
   }
 }
-

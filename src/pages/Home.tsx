@@ -1,187 +1,173 @@
+"use client"
+
 import type React from "react"
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
-import { Calculator, BookOpen, Map, Save, ArrowRight, CheckCircle2, Clock, FileText, BarChart3 } from "lucide-react"
+import { Calculator, BookOpen } from "lucide-react"
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
+import FeatureCard from "@/components/FeatureCard"
+import BenefitCard from "@/components/BenefitCard"
+import { features, benefits } from "@/data/featuresData"
 
 const Home: React.FC = () => {
-  const features = [
-    {
-      title: "Calculadoras de ICMS",
-      description: "Calcule o ICMS para diferentes tipos de tributação de forma rápida e precisa.",
-      icon: <Calculator className="h-8 w-8 text-primary" />,
-      link: "/calculadora",
-    },
-    {
-      title: "Explicações Detalhadas",
-      description: "Entenda como funciona o ICMS com explicações claras e exemplos práticos.",
-      icon: <BookOpen className="h-8 w-8 text-primary" />,
-      link: "/explicacoes",
-    },
-    {
-      title: "Mapa de Alíquotas",
-      description: "Visualize as alíquotas de ICMS de cada estado brasileiro em um mapa interativo.",
-      icon: <Map className="h-8 w-8 text-primary" />,
-      link: "/mapa-icms",
-    },
-    {
-      title: "Armazenamento Local",
-      description: "Salve seus cálculos para consulta posterior diretamente no seu navegador.",
-      icon: <Save className="h-8 w-8 text-primary" />,
-      link: "/calculadora",
-    },
-  ]
+  // Animation controls
+  const controls = useAnimation()
+  const { ref: inViewRef, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible")
+    }
+  }, [controls, inView])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(75,44,44,0.1)_0%,transparent_70%)]"></div>
-          <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_70%,rgba(181,155,106,0.1)_0%,transparent_70%)]"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(75,44,44,0.15)_0%,transparent_70%)]"></div>
+          <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_70%,rgba(181,155,106,0.15)_0%,transparent_70%)]"></div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <motion.div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-vinho to-dourado bg-clip-text text-transparent drop-shadow-sm">
+            <motion.h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 bg-gradient-to-r from-vinho via-vinho-dark to-dourado bg-clip-text text-transparent drop-shadow-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Simplifique seus cálculos de ICMS
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            </motion.h1>
+            <motion.p
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-700 dark:text-slate-200 mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               ContaAi é a ferramenta que profissionais e estudantes da área fiscal precisam para calcular e entender o
               ICMS de forma simples e eficiente.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-5">
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-5"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
               <Link
                 to="/calculadora"
-                className="bg-vinho hover:bg-vinho-dark text-white font-medium py-4 px-8 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-gradient-to-r from-vinho to-vinho-dark text-white font-medium py-3 sm:py-4 px-6 sm:px-8 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-vinho focus:ring-opacity-50"
               >
                 <Calculator className="h-5 w-5" />
                 Começar a Calcular
               </Link>
               <Link
                 to="/explicacoes"
-                className="bg-dourado/90 hover:bg-dourado text-slate-900 font-medium py-4 px-8 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="bg-gradient-to-r from-dourado/90 to-dourado text-slate-900 font-medium py-3 sm:py-4 px-6 sm:px-8 rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dourado focus:ring-opacity-50 mt-3 sm:mt-0"
               >
                 <BookOpen className="h-5 w-5" />
                 Aprender sobre ICMS
               </Link>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white dark:bg-slate-800/50 backdrop-blur-sm">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 relative inline-block">
-              <span className="bg-gradient-to-r from-vinho to-dourado bg-clip-text text-transparent">
+      <section className="py-16 md:py-20 bg-white/80 dark:bg-slate-800/70 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            ref={inViewRef}
+            className="text-center mb-12 md:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={controls}
+            variants={{
+              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0, y: 20 },
+            }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative inline-block">
+              <span className="bg-gradient-to-r from-vinho via-vinho-dark to-dourado bg-clip-text text-transparent">
                 Recursos do ContaAi
               </span>
-              <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-dourado rounded-full"></span>
+              <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-vinho to-dourado rounded-full"></span>
             </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mt-6">
+              Ferramentas poderosas para facilitar seu trabalho com cálculos de ICMS e entender melhor a tributação.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {features.map((feature, index) => (
-              <Link
-                key={index}
-                to={feature.link}
-                className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl p-8 flex flex-col items-center text-center transition-all duration-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 group border border-transparent hover:border-vinho/20"
-              >
-                <div className="mb-6 p-5 bg-vinho/10 rounded-full transform transition-transform group-hover:scale-110 group-hover:bg-vinho/20">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-vinho dark:text-dourado">{feature.title}</h3>
-                <p className="text-slate-600 dark:text-slate-300 mb-6">{feature.description}</p>
-                <div className="mt-auto text-vinho dark:text-dourado flex items-center opacity-70 group-hover:opacity-100 transition-opacity">
-                  <span className="mr-1 font-medium">Saiba mais</span>
-                  <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
+              <FeatureCard key={index} {...feature} index={index} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 relative inline-block">
-              <span className="bg-gradient-to-r from-vinho to-dourado bg-clip-text text-transparent">
+      <section className="py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12 md:mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative inline-block">
+              <span className="bg-gradient-to-r from-vinho via-vinho-dark to-dourado bg-clip-text text-transparent">
                 Por que usar o ContaAi?
               </span>
-              <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-dourado rounded-full"></span>
+              <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-vinho to-dourado rounded-full"></span>
             </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="flex items-start bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="mr-6 p-4 bg-vinho/10 rounded-full">
-                <CheckCircle2 className="h-8 w-8 text-vinho dark:text-dourado" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold mb-4 text-vinho dark:text-dourado">Cálculos Precisos</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-                  Algoritmos atualizados conforme a legislação vigente para garantir resultados confiáveis em todos os
-                  seus cálculos fiscais.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="mr-6 p-4 bg-vinho/10 rounded-full">
-                <Clock className="h-8 w-8 text-vinho dark:text-dourado" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold mb-4 text-vinho dark:text-dourado">Economia de Tempo</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-                  Reduza o tempo gasto em cálculos manuais e evite erros com nossa calculadora automatizada e intuitiva.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="mr-6 p-4 bg-vinho/10 rounded-full">
-                <FileText className="h-8 w-8 text-vinho dark:text-dourado" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold mb-4 text-vinho dark:text-dourado">Documentação Completa</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-                  Gere relatórios em PDF para documentar seus cálculos e compartilhar com sua equipe ou guardar para
-                  referência futura.
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
-              <div className="mr-6 p-4 bg-vinho/10 rounded-full">
-                <BarChart3 className="h-8 w-8 text-vinho dark:text-dourado" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold mb-4 text-vinho dark:text-dourado">Análise Visual</h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-                  Visualize as alíquotas e diferenças regionais através de mapas e gráficos interativos para melhor
-                  compreensão.
-                </p>
-              </div>
-            </div>
+            <p className="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mt-6">
+              Descubra como nossa plataforma pode transformar sua experiência com cálculos tributários.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            {benefits.map((benefit, index) => (
+              <BenefitCard key={index} {...benefit} index={index} />
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 mx-6 md:mx-12 lg:mx-20 rounded-3xl bg-gradient-to-r from-vinho/10 via-vinho/5 to-dourado/10 shadow-2xl">
-        <div className="text-center max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-vinho dark:text-dourado">
+      <section className="py-16 md:py-20 mx-4 sm:mx-6 md:mx-12 lg:mx-20 rounded-3xl bg-gradient-to-r from-vinho/15 via-vinho/10 to-dourado/15 shadow-2xl">
+        <motion.div
+          className="text-center max-w-3xl mx-auto px-4 sm:px-6"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-vinho dark:text-dourado">
             Pronto para simplificar seus cálculos fiscais?
           </h2>
-          <p className="text-xl text-slate-600 dark:text-slate-300 mb-12 leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-700 dark:text-slate-200 mb-8 md:mb-12 leading-relaxed">
             Comece a usar o ContaAi hoje mesmo e economize tempo com cálculos precisos de ICMS. Sem instalações, sem
             complicações.
           </p>
-          <Link
-            to="/calculadora"
-            className="bg-vinho hover:bg-vinho-dark text-white font-medium py-4 px-10 rounded-xl inline-flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg"
-          >
-            <Calculator className="h-5 w-5" />
-            Experimentar Agora
-          </Link>
-        </div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/calculadora"
+              className="bg-gradient-to-r from-vinho to-vinho-dark text-white font-medium py-3 sm:py-4 px-8 sm:px-10 rounded-xl inline-flex items-center justify-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base md:text-lg focus:outline-none focus:ring-2 focus:ring-vinho focus:ring-opacity-50"
+            >
+              <Calculator className="h-5 w-5" />
+              Experimentar Agora
+            </Link>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   )

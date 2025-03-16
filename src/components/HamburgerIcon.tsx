@@ -1,34 +1,54 @@
 "use client"
 
 import type React from "react"
+import { motion } from "framer-motion"
 
 interface HamburgerIconProps {
   isOpen: boolean
   toggle: () => void
-  className?: string
 }
 
-const HamburgerIcon: React.FC<HamburgerIconProps> = ({ isOpen, toggle, className = "" }) => {
+const HamburgerIcon: React.FC<HamburgerIconProps> = ({ isOpen, toggle }) => {
+  const topVariants = {
+    closed: { rotate: 0, translateY: 0 },
+    open: { rotate: 45, translateY: 8 },
+  }
+
+  const centerVariants = {
+    closed: { opacity: 1 },
+    open: { opacity: 0 },
+  }
+
+  const bottomVariants = {
+    closed: { rotate: 0, translateY: 0 },
+    open: { rotate: -45, translateY: -8 },
+  }
+
   return (
     <button
-      className={`relative w-8 h-8 flex justify-center items-center rounded-md hover:bg-primary-foreground/10 transition-all ${className}`}
+      className="p-2 rounded-md hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white/30"
       onClick={toggle}
       aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
       aria-expanded={isOpen}
     >
-      <div className="flex flex-col justify-between w-6 h-5 transform transition-all duration-300">
-        <span
-          className={`bg-current h-0.5 w-full transform transition-all duration-300 origin-left ${
-            isOpen ? "rotate-45 translate-x-px" : ""
-          }`}
+      <div className="w-6 h-6 flex flex-col justify-between items-center">
+        <motion.span
+          className="w-6 h-0.5 bg-white rounded-full block"
+          variants={topVariants}
+          animate={isOpen ? "open" : "closed"}
+          transition={{ duration: 0.3 }}
         />
-        <span
-          className={`bg-current h-0.5 w-full transition-all duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`}
+        <motion.span
+          className="w-6 h-0.5 bg-white rounded-full block"
+          variants={centerVariants}
+          animate={isOpen ? "open" : "closed"}
+          transition={{ duration: 0.3 }}
         />
-        <span
-          className={`bg-current h-0.5 w-full transform transition-all duration-300 origin-left ${
-            isOpen ? "-rotate-45 translate-x-px" : ""
-          }`}
+        <motion.span
+          className="w-6 h-0.5 bg-white rounded-full block"
+          variants={bottomVariants}
+          animate={isOpen ? "open" : "closed"}
+          transition={{ duration: 0.3 }}
         />
       </div>
     </button>
