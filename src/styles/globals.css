@@ -52,7 +52,7 @@
   /* Cores de fundo - Tema Escuro */
   --background-light: 26, 32, 44; /* Azul noite */
   --background-medium: 45, 55, 72; /* Azul escuro */
-  --background-dark: 74, 85, 104; /* Cinza escuro */
+  --background-dark: #1c1a1a; /* Cinza escuro */
   --background-darker: 113, 128, 150; /* Cinza médio */
 
   /* Cores de texto - Tema Escuro */
