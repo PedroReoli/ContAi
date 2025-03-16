@@ -9,7 +9,7 @@ const Bottombar: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center">
               <Calculator className="h-6 w-6 mr-2 text-vinho dark:text-dourado" />
-              <h3 className="text-xl font-bold text-vinho dark:text-dourado">ContaAí</h3>
+              <h3 className="text-xl font-bold text-vinho dark:text-dourado">Conta.Aí</h3>
             </div>
             <p className="text-slate-600 dark:text-slate-300 text-sm">
               Simplificando cálculos fiscais para profissionais e estudantes da área contábil e tributária.
@@ -101,7 +101,7 @@ const Bottombar: React.FC = () => {
 
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-600 dark:text-slate-300 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} ContaAí - Todos os direitos reservados
+            &copy; {new Date().getFullYear()} Conta.Aí - Todos os direitos reservados
           </p>
           <div className="flex space-x-4">
             <a href="#" className="text-slate-600 dark:text-slate-300 hover:text-vinho dark:hover:text-dourado">

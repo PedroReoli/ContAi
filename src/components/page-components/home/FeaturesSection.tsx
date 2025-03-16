@@ -61,8 +61,8 @@ const FeaturesSection: React.FC = () => {
           }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title text-txt-primary dark:text-txt-light">
-            <span className="text-primary dark:text-secondary">Recursos do ContaAí</span>
+          <h2 className="section-title text-primary dark:text-secondary">
+            Recursos do Conta.Aí
             <span className="section-title-underline"></span>
           </h2>
           <p className="text-txt-secondary dark:text-txt-muted max-w-2xl mx-auto mt-6 text-lg">
@@ -86,7 +86,7 @@ const FeaturesSection: React.FC = () => {
               <div className="w-14 h-14 mb-6 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 flex items-center justify-center text-primary dark:text-secondary">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-txt-primary dark:text-txt-light">{feature.title}</h3>
+              <h3 className="text-xl font-bold mb-3 text-primary dark:text-secondary">{feature.title}</h3>
               <p className="text-txt-secondary dark:text-txt-muted">{feature.description}</p>
             </motion.div>
           ))}

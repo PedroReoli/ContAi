@@ -7,7 +7,7 @@ import { Calculator, ChevronRight } from "lucide-react"
 
 const CTASection: React.FC = () => {
   return (
-    <section className="py-16 md:py-20 mx-4 sm:mx-6 md:mx-12 lg:mx-20 rounded-3xl bg-primary/10 dark:bg-primary/15 shadow-xl">
+    <section className="py-16 md:py-20 mx-4 sm:mx-6 md:mx-12 lg:mx-20 rounded-3xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/15 dark:to-secondary/15 shadow-xl border border-bg-medium/20 dark:border-bg-dark/30">
       <motion.div
         className="text-center max-w-3xl mx-auto px-4"
         initial={{ opacity: 0, scale: 0.95 }}
@@ -19,11 +19,11 @@ const CTASection: React.FC = () => {
           Pronto para simplificar seus cálculos fiscais?
         </h2>
         <p className="text-lg md:text-xl text-txt-secondary dark:text-txt-muted mb-12 leading-relaxed">
-          Comece a usar o ContaAí hoje mesmo e economize tempo com cálculos precisos de ICMS. Sem instalações, sem
+          Comece a usar o Conta.Aí hoje mesmo e economize tempo com cálculos precisos de ICMS. Sem instalações, sem
           complicações.
         </p>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link to="/calculadora" className="btn-primary text-lg px-10">
+          <Link to="/calculadora" className="btn-secondary text-lg px-10">
             <Calculator className="h-5 w-5" />
             Experimentar Agora
             <ChevronRight className="h-5 w-5 ml-1" />

@@ -59,8 +59,8 @@ const HowItWorksSection: React.FC = () => {
           }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title text-txt-primary dark:text-txt-light">
-            <span className="text-primary dark:text-secondary">Como Funciona</span>
+          <h2 className="section-title text-primary dark:text-secondary">
+            Como Funciona
             <span className="section-title-underline"></span>
           </h2>
           <p className="text-txt-secondary dark:text-txt-muted max-w-2xl mx-auto mt-6 text-lg">
@@ -83,20 +83,20 @@ const HowItWorksSection: React.FC = () => {
             >
               <div className="glass-card p-6 relative z-10 h-full">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold text-lg mr-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-secondary flex items-center justify-center text-white font-bold text-lg mr-4">
                     {index + 1}
                   </div>
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20 flex items-center justify-center text-primary dark:text-secondary">
                     {step.icon}
                   </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-txt-primary dark:text-txt-light">{step.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-primary dark:text-secondary">{step.title}</h3>
                 <p className="text-txt-secondary dark:text-txt-muted">{step.description}</p>
               </div>
 
               {index < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 z-0">
-                  <ArrowRight className="h-8 w-8 text-primary/30 dark:text-primary/50" />
+                  <ArrowRight className="h-8 w-8 text-secondary/30 dark:text-secondary/50" />
                 </div>
               )}
             </motion.div>
@@ -115,7 +115,7 @@ const HowItWorksSection: React.FC = () => {
         >
           <Link
             to="/calculadora"
-            className="inline-flex items-center gap-2 text-primary dark:text-secondary font-medium hover:underline"
+            className="inline-flex items-center gap-2 text-secondary dark:text-secondary font-medium hover:underline"
           >
             Experimente agora
             <ChevronRight className="h-4 w-4" />

@@ -28,7 +28,7 @@ const Topbar: React.FC = () => {
           <Link to="/" className="flex items-center space-x-2 group">
             <Calculator className="h-6 w-6 group-hover:scale-110 transition-transform" />
             <span className="text-2xl font-bold bg-gradient-to-r from-white to-dourado bg-clip-text text-transparent">
-              ContaAí
+              Conta.Aí
             </span>
           </Link>
 

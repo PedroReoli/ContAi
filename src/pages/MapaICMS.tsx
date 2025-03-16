@@ -14,19 +14,18 @@ import {
 
 const MapaICMS: React.FC = () => {
   const [tipoAliquota, setTipoAliquota] = useState<string>("interna")
-  const [] = useState<string | null>(null)
   const [produtoSelecionado, setProdutoSelecionado] = useState<string | null>(null)
 
   // Função para obter a cor do estado com base na alíquota
   const getColorScale = (aliquota: number) => {
-    if (aliquota <= 7) return "#E0F2FE" // Azul muito claro
-    if (aliquota <= 12) return "#BAE6FD" // Azul claro
-    if (aliquota <= 17) return "#7DD3FC" // Azul médio claro
-    if (aliquota <= 18) return "#38BDF8" // Azul médio
-    if (aliquota <= 20) return "#0EA5E9" // Azul médio escuro
-    if (aliquota <= 25) return "#0284C7" // Azul escuro
-    if (aliquota <= 30) return "#0369A1" // Azul mais escuro
-    return "#075985" // Azul muito escuro
+    if (aliquota <= 7) return "#BFDBFE" // Azul muito claro
+    if (aliquota <= 12) return "#93C5FD" // Azul claro
+    if (aliquota <= 17) return "#60A5FA" // Azul médio claro
+    if (aliquota <= 18) return "#3B82F6" // Azul médio
+    if (aliquota <= 20) return "#2563EB" // Azul médio escuro
+    if (aliquota <= 25) return "#1D4ED8" // Azul escuro
+    if (aliquota <= 30) return "#1E40AF" // Azul mais escuro
+    return "#1E3A8A" // Azul muito escuro
   }
 
   // Função para obter a alíquota do estado com base no tipo selecionado

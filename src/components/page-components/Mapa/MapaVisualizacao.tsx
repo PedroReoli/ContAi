@@ -153,35 +153,35 @@ const MapaLegenda: React.FC = () => {
   return (
     <div className="p-6 border-t border-bg-medium/30 dark:border-bg-dark/50 bg-white dark:bg-bg-darker flex flex-wrap justify-center gap-6">
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#E0F2FE" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#BFDBFE" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">Até 7%</span>
       </div>
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#BAE6FD" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#93C5FD" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">8% - 12%</span>
       </div>
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#7DD3FC" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#60A5FA" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">13% - 17%</span>
       </div>
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#38BDF8" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#3B82F6" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">18%</span>
       </div>
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#0EA5E9" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#2563EB" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">19% - 20%</span>
       </div>
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#0284C7" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#1D4ED8" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">21% - 25%</span>
       </div>
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#0369A1" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#1E40AF" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">26% - 30%</span>
       </div>
       <div className="flex items-center">
-        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#075985" }}></div>
+        <div className="w-5 h-5 mr-2 rounded" style={{ backgroundColor: "#1E3A8A" }}></div>
         <span className="text-sm text-txt-secondary dark:text-txt-muted">Acima de 30%</span>
       </div>
     </div>

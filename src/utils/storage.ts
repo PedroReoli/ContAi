@@ -40,7 +40,7 @@ export const salvarCalculo = (calculo: Omit<CalculoSalvo, "id" | "data">): Calcu
     const calculosLimitados = calculosAtualizados.slice(0, 50)
 
     // Salva no Local Storage
-    localStorage.setItem("ContaAí_calculos", JSON.stringify(calculosLimitados))
+    localStorage.setItem("Conta.Aí_calculos", JSON.stringify(calculosLimitados))
 
     return novoCalculo
   } catch (error) {
@@ -54,7 +54,7 @@ export const salvarCalculo = (calculo: Omit<CalculoSalvo, "id" | "data">): Calcu
  */
 export const recuperarCalculos = (): CalculoSalvo[] => {
   try {
-    const calculosJSON = localStorage.getItem("ContaAí_calculos")
+    const calculosJSON = localStorage.getItem("Conta.Aí_calculos")
     if (!calculosJSON) return []
 
     return JSON.parse(calculosJSON) as CalculoSalvo[]
@@ -85,7 +85,7 @@ export const removerCalculo = (id: string): boolean => {
     const calculos = recuperarCalculos()
     const calculosAtualizados = calculos.filter((calculo) => calculo.id !== id)
 
-    localStorage.setItem("ContaAí_calculos", JSON.stringify(calculosAtualizados))
+    localStorage.setItem("Conta.Aí_calculos", JSON.stringify(calculosAtualizados))
     return true
   } catch (error) {
     console.error("Erro ao remover cálculo:", error)
@@ -98,7 +98,7 @@ export const removerCalculo = (id: string): boolean => {
  */
 export const limparHistorico = (): boolean => {
   try {
-    localStorage.removeItem("ContaAí_calculos")
+    localStorage.removeItem("Conta.Aí_calculos")
     return true
   } catch (error) {
     console.error("Erro ao limpar histórico:", error)

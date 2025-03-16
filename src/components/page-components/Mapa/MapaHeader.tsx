@@ -16,7 +16,7 @@ const MapaHeader: React.FC<MapaHeaderProps> = ({ title, description }) => {
       transition={{ duration: 0.5 }}
       className="mb-12 text-center"
     >
-      <h1 className="text-4xl md:text-5xl font-bold mb-4">{title}</h1>
+      <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary dark:text-secondary">{title}</h1>
       <p className="text-txt-secondary dark:text-txt-muted text-lg max-w-3xl mx-auto">{description}</p>
     </motion.div>
   )

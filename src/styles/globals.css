@@ -3,67 +3,67 @@
 @tailwind utilities;
 
 :root {
-  /* Cores principais - Tons sóbrios e profissionais */
-  --primary: 64, 84, 104; /* Azul acinzentado escuro */
-  --secondary: 100, 116, 139; /* Cinza azulado médio */
-  --accent: 148, 163, 184; /* Cinza azulado claro */
+  /* Cores principais - Azul marinho e Dourado */
+  --primary: 26, 54, 93; /* Azul marinho */
+  --secondary: 201, 154, 46; /* Dourado */
+  --accent: 113, 128, 150; /* Cinza neutro */
 
   /* Cores de fundo - Tema Claro */
-  --background-light: 248, 250, 252; /* Branco gelo */
-  --background-medium: 241, 245, 249; /* Cinza muito claro */
-  --background-dark: 30, 41, 59; /* Cinza azulado escuro */
-  --background-darker: 15, 23, 42; /* Cinza azulado muito escuro */
+  --background-light: 247, 250, 252; /* Branco antigo */
+  --background-medium: 237, 242, 247; /* Cinza pérola */
+  --background-dark: 45, 55, 72; /* Azul escuro */
+  --background-darker: 26, 32, 44; /* Azul noite */
 
   /* Cores de texto */
-  --text-primary: 15, 23, 42; /* Quase preto */
-  --text-secondary: 71, 85, 105; /* Cinza escuro */
-  --text-light: 248, 250, 252; /* Branco gelo */
-  --text-muted: 148, 163, 184; /* Cinza médio */
-  --text-accent: 100, 116, 139; /* Cinza azulado médio */
+  --text-primary: 26, 32, 44; /* Quase preto */
+  --text-secondary: 74, 85, 104; /* Cinza escuro */
+  --text-light: 247, 250, 252; /* Branco antigo */
+  --text-muted: 113, 128, 150; /* Cinza médio */
+  --text-accent: 113, 128, 150; /* Cinza neutro */
 
   /* Estados */
-  --state-error: 127, 29, 29; /* Vermelho escuro */
-  --state-success: 20, 83, 45; /* Verde escuro */
-  --state-warning: 120, 53, 15; /* Âmbar escuro */
-  --state-info: 30, 58, 138; /* Azul escuro */
+  --state-error: 220, 38, 38; /* Vermelho */
+  --state-success: 22, 163, 74; /* Verde */
+  --state-warning: 217, 119, 6; /* Âmbar */
+  --state-info: 37, 99, 235; /* Azul informativo */
 
   /* Botões */
-  --button-primary: 51, 65, 85; /* Cinza azulado */
-  --button-secondary: 71, 85, 105; /* Cinza médio */
-  --button-hover: 30, 41, 59; /* Cinza azulado escuro */
+  --button-primary: 26, 54, 93; /* Azul marinho */
+  --button-secondary: 201, 154, 46; /* Dourado */
+  --button-hover: 44, 82, 130; /* Azul marinho mais claro */
 
   /* Sombras */
-  --shadow-color: 15, 23, 42;
+  --shadow-color: 26, 32, 44;
   --shadow-strength: 0.05;
 
   /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, rgb(51, 65, 85) 0%, rgb(30, 41, 59) 100%);
-  --gradient-secondary: linear-gradient(135deg, rgb(100, 116, 139) 0%, rgb(71, 85, 105) 100%);
-  --gradient-accent: linear-gradient(135deg, rgb(148, 163, 184) 0%, rgb(100, 116, 139) 100%);
+  --gradient-primary: linear-gradient(135deg, rgb(26, 54, 93) 0%, rgb(44, 82, 130) 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(201, 154, 46) 0%, rgb(226, 179, 71) 100%);
+  --gradient-accent: linear-gradient(135deg, rgb(113, 128, 150) 0%, rgb(160, 174, 192) 100%);
 
   /* Bordas e Raios */
   --radius: 0.5rem;
   --border: 226, 232, 240;
   --input: 226, 232, 240;
-  --ring: 51, 65, 85;
+  --ring: 26, 54, 93;
 }
 
 .dark {
   /* Cores de fundo - Tema Escuro */
-  --background-light: 15, 23, 42; /* Cinza azulado muito escuro */
-  --background-medium: 30, 41, 59; /* Cinza azulado escuro */
-  --background-dark: 51, 65, 85; /* Cinza azulado */
-  --background-darker: 71, 85, 105; /* Cinza médio */
+  --background-light: 26, 32, 44; /* Azul noite */
+  --background-medium: 45, 55, 72; /* Azul escuro */
+  --background-dark: 74, 85, 104; /* Cinza escuro */
+  --background-darker: 113, 128, 150; /* Cinza médio */
 
   /* Cores de texto - Tema Escuro */
-  --text-primary: 248, 250, 252; /* Branco gelo */
+  --text-primary: 247, 250, 252; /* Branco antigo */
   --text-secondary: 226, 232, 240; /* Cinza muito claro */
-  --text-light: 248, 250, 252; /* Branco gelo */
-  --text-muted: 148, 163, 184; /* Cinza médio */
+  --text-light: 247, 250, 252; /* Branco antigo */
+  --text-muted: 160, 174, 192; /* Cinza claro */
 
   /* Bordas e Raios - Tema Escuro */
-  --border: 51, 65, 85;
-  --input: 71, 85, 105;
+  --border: 45, 55, 72;
+  --input: 74, 85, 104;
 
   /* Sombras - Tema Escuro */
   --shadow-color: 0, 0, 0;

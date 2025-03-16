@@ -52,7 +52,7 @@ export const gerarPdfCalculo = (calculo: CalculoSalvo, config: RelatorioConfig =
     doc.setTextColor("#FFFFFF")
     doc.setFontSize(24)
     doc.setFont(fontPrincipal, "bold")
-    doc.text("ContaAí", margemEsquerda, 20)
+    doc.text("Conta.Aí", margemEsquerda, 20)
 
     doc.setFontSize(12)
     doc.setFont(fontPrincipal, "normal")
@@ -123,7 +123,7 @@ export const gerarPdfCalculo = (calculo: CalculoSalvo, config: RelatorioConfig =
     doc.setTextColor(corTexto)
     doc.setFontSize(10)
     doc.setFont(fontPrincipal, "normal")
-    doc.text(`Gerado por ContaAí - Calculadora de ICMS em ${formatDate(new Date())}`, margemEsquerda, rodapeY)
+    doc.text(`Gerado por Conta.Aí - Calculadora de ICMS em ${formatDate(new Date())}`, margemEsquerda, rodapeY)
 
     // Adicionar numeração de página
     doc.text(`Página 1 de 1`, larguraPagina - margemEsquerda - 20, rodapeY, { align: "right" })
@@ -230,7 +230,7 @@ export const gerarPdfMultiplosCalculos = (calculos: CalculoSalvo[], config: Rela
     doc.setTextColor("#FFFFFF")
     doc.setFontSize(24)
     doc.setFont(fontPrincipal, "bold")
-    doc.text("ContaAí", margemEsquerda, 20)
+    doc.text("Conta.Aí", margemEsquerda, 20)
 
     doc.setFontSize(12)
     doc.setFont(fontPrincipal, "normal")
@@ -291,7 +291,7 @@ export const gerarPdfMultiplosCalculos = (calculos: CalculoSalvo[], config: Rela
     doc.setTextColor(corTexto)
     doc.setFontSize(10)
     doc.setFont(fontPrincipal, "normal")
-    doc.text(`Gerado por ContaAí - Calculadora de ICMS em ${formatDate(new Date())}`, margemEsquerda, rodapeY)
+    doc.text(`Gerado por Conta.Aí - Calculadora de ICMS em ${formatDate(new Date())}`, margemEsquerda, rodapeY)
 
     // Adicionar numeração de página
     doc.text(`Página 1 de 1`, larguraPagina - margemEsquerda - 20, rodapeY, { align: "right" })

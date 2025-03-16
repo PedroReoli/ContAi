@@ -10,8 +10,8 @@ const HeroSection: React.FC = () => {
     <section className="relative py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(var(--primary),0.05)_0%,transparent_70%)]"></div>
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_70%,rgba(var(--secondary),0.05)_0%,transparent_70%)]"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,rgba(var(--primary),0.08)_0%,transparent_70%)]"></div>
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_70%,rgba(var(--secondary),0.08)_0%,transparent_70%)]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -26,22 +26,22 @@ const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/90 font-medium text-sm"
+              className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-medium text-sm"
             >
               Simplifique seus cálculos tributários
             </motion.div>
 
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-txt-primary dark:text-txt-light"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-primary dark:text-secondary"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               Cálculos de ICMS <br className="hidden sm:block" />
-              <span className="relative text-primary dark:text-secondary">
+              <span className="relative">
                 simplificados
                 <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 text-secondary/30"
+                  className="absolute -bottom-2 left-0 w-full h-3 text-secondary/30 dark:text-secondary/50"
                   viewBox="0 0 100 12"
                   preserveAspectRatio="none"
                 >
@@ -56,7 +56,7 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              ContaAí é a ferramenta que profissionais e estudantes da área fiscal precisam para calcular e entender o
+              Conta.Aí é a ferramenta que profissionais e estudantes da área fiscal precisam para calcular e entender o
               ICMS de forma simples e eficiente.
             </motion.p>
 
@@ -85,15 +85,15 @@ const HeroSection: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-state-success" />
+                <CheckCircle2 className="h-5 w-5 text-secondary dark:text-secondary" />
                 <span>Gratuito</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-state-success" />
+                <CheckCircle2 className="h-5 w-5 text-secondary dark:text-secondary" />
                 <span>Sem cadastro</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-state-success" />
+                <CheckCircle2 className="h-5 w-5 text-secondary dark:text-secondary" />
                 <span>Atualizado</span>
               </div>
             </motion.div>
@@ -110,7 +110,7 @@ const HeroSection: React.FC = () => {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-primary dark:text-secondary">Calculadora ICMS</h3>
-                  <span className="px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary/90 text-sm font-medium">
+                  <span className="px-3 py-1 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary text-sm font-medium">
                     ICMS 00
                   </span>
                 </div>
@@ -145,14 +145,14 @@ const HeroSection: React.FC = () => {
               </div>
 
               <div className="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
-                <div className="w-20 h-20 rounded-full bg-gradient-primary flex items-center justify-center text-white shadow-lg">
+                <div className="w-20 h-20 rounded-full bg-gradient-secondary flex items-center justify-center text-white shadow-lg">
                   <Sparkles className="h-8 w-8" />
                 </div>
               </div>
             </div>
 
             <div className="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block">
-              <div className="w-16 h-16 rounded-full bg-gradient-secondary flex items-center justify-center text-white shadow-lg">
+              <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-white shadow-lg">
                 <Calculator className="h-6 w-6" />
               </div>
             </div>

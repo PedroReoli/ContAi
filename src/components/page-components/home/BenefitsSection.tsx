@@ -61,8 +61,8 @@ const BenefitsSection: React.FC = () => {
           }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="section-title text-txt-primary dark:text-txt-light">
-            <span className="text-primary dark:text-secondary">Por que usar o ContaAí?</span>
+          <h2 className="section-title text-primary dark:text-secondary">
+            Por que usar o Conta.Aí?
             <span className="section-title-underline"></span>
           </h2>
           <p className="text-txt-secondary dark:text-txt-muted max-w-2xl mx-auto mt-6 text-lg">
@@ -87,7 +87,7 @@ const BenefitsSection: React.FC = () => {
                 {benefit.icon}
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-3 text-txt-primary dark:text-txt-light">{benefit.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-primary dark:text-secondary">{benefit.title}</h3>
                 <p className="text-txt-secondary dark:text-txt-muted">{benefit.description}</p>
               </div>
             </motion.div>

@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="https://placeholder.svg?height=200&width=200" alt="ContaAí Logo" width="200" height="200">
-  <h1>ContaAí - Calculadora de ICMS</h1>
+  <img src="https://placeholder.svg?height=200&width=200" alt="Conta.Aí Logo" width="200" height="200">
+  <h1>Conta.Aí - Calculadora de ICMS</h1>
   <p><strong>Simplificando o cálculo de ICMS para profissionais e estudantes da área fiscal</strong></p>
   
   [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -29,11 +29,11 @@
 
 <img align="right" width="300" src="https://placeholder.svg?height=200&width=300" alt="ICMS Illustration">
 
-O **ContaAí** é um aplicativo web desenvolvido com Vite, React e TailwindCSS, voltado para cálculos e explicações sobre o ICMS (Imposto sobre Circulação de Mercadorias e Serviços) no Brasil. 
+O **Conta.Aí** é um aplicativo web desenvolvido com Vite, React e TailwindCSS, voltado para cálculos e explicações sobre o ICMS (Imposto sobre Circulação de Mercadorias e Serviços) no Brasil. 
 
 Nossa missão é simplificar o entendimento e o cálculo deste imposto complexo, fornecendo uma ferramenta intuitiva e educativa para profissionais e estudantes da área fiscal.
 
-O ICMS é um dos tributos mais complexos do sistema tributário brasileiro, com diferentes alíquotas, regimes especiais e particularidades por estado. O ContaAí surge como uma solução para tornar esse universo mais acessível.
+O ICMS é um dos tributos mais complexos do sistema tributário brasileiro, com diferentes alíquotas, regimes especiais e particularidades por estado. O Conta.Aí surge como uma solução para tornar esse universo mais acessível.
 
 <br clear="right"/>
 
