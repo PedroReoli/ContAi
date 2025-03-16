@@ -10,7 +10,7 @@ import {
   MapaNotas,
   dadosICMS,
   produtosEspeciais,
-} from "@/components/Mapa"
+} from "@/components/page-components/Mapa"
 
 const MapaICMS: React.FC = () => {
   const [tipoAliquota, setTipoAliquota] = useState<string>("interna")

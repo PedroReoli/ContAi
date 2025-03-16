@@ -7,7 +7,7 @@ import {
   HowItWorksSection,
   BenefitsSection,
   CTASection,
-} from "@/components/home"
+} from "@/components/page-components/home"
 
 const Home: React.FC = () => {
   return (

@@ -4,10 +4,10 @@ import type React from "react"
 import { motion } from "framer-motion"
 import { Tabs, TabList, Tab, TabPanel } from "@/components/ui/Tabs"
 import { BookOpen, FileText, BarChart3, HelpCircle } from "lucide-react"
-import IntroducaoICMS from "@/components/explicacoes/IntroducaoICMS"
-import TiposICMS from "@/components/explicacoes/TiposICMS"
-import InfograficosICMS from "@/components/explicacoes/InfograficosICMS"
-import FAQICMS from "@/components/explicacoes/FAQICMS"
+import IntroducaoICMS from "@/components/page-components/explicacoes/IntroducaoICMS"
+import TiposICMS from "@/components/page-components/explicacoes/TiposICMS"
+import InfograficosICMS from "@/components/page-components/explicacoes/InfograficosICMS"
+import FAQICMS from "@/components/page-components/explicacoes/FAQICMS"
 
 const Explicacoes: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import type React from "react"
-import Topbar from "./Topbar"
-import Bottombar from "./Bottombar"
+import Topbar from "@/components/shared/Topbar"
+import Bottombar from "@/components/shared/Bottombar"
 
 interface LayoutProps {
   children: React.ReactNode

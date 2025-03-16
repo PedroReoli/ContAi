@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-import { ThemeProvider } from "./src/contexts/ThemeContext"
-import Layout from "./src/components/Layout"
-import Home from "./src/pages/Home"
-import Calculadora from "./src/pages/Calculadora"
-import Explicacoes from "./src/pages/Explicacoes"
-import MapaICMS from "./src/pages/MapaICMS"
+import { ThemeProvider } from "@/contexts/ThemeContext"
+import Layout from "@/components/shared/Layout"
+import Home from "@/pages/Home"
+import Calculadora from "@/pages/Calculadora"
+import Explicacoes from "@/pages/Explicacoes"
+import MapaICMS from "@/pages/MapaICMS"
 
 function App() {
   return (

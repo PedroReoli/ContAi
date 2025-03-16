@@ -2,11 +2,11 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import CalculadoraICMS00 from "@/components/calculadora/CalculadoraICMS00"
-import CalculadoraICMS10 from "@/components/calculadora/CalculadoraICMS10"
-import CalculadoraICMS20 from "@/components/calculadora/CalculadoraICMS20"
-import CalculadoraICMS51 from "@/components/calculadora/CalculadoraICMS51"
-import CalculadoraICMS70 from "@/components/calculadora/CalculadoraICMS70"
+import CalculadoraICMS00 from "@/components/page-components/calculadora/CalculadoraICMS00"
+import CalculadoraICMS10 from "@/components/page-components/calculadora/CalculadoraICMS10"
+import CalculadoraICMS20 from "@/components/page-components/calculadora/CalculadoraICMS20"
+import CalculadoraICMS51 from "@/components/page-components/calculadora/CalculadoraICMS51"
+import CalculadoraICMS70 from "@/components/page-components/calculadora/CalculadoraICMS70"
 import { isLocalStorageDisponivel } from "@/utils/storage"
 import { motion } from "framer-motion"
 
