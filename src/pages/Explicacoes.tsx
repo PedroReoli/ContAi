@@ -19,60 +19,70 @@ const Explicacoes: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Explicações sobre ICMS</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary dark:text-secondary">
+            Explicações sobre ICMS
+          </h1>
           <p className="text-txt-secondary dark:text-txt-muted text-lg max-w-3xl mx-auto">
             Entenda como funciona o Imposto sobre Circulação de Mercadorias e Serviços no Brasil
           </p>
         </motion.div>
 
-        <Tabs defaultTab="introducao" onChange={() => {}}>
-          <TabList className="mb-10 flex justify-center border-b border-bg-medium/30 dark:border-bg-dark/50 overflow-x-auto">
-            <Tab
-              id="introducao"
-              className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-primary dark:data-[state=active]:border-secondary data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
-            >
-              <BookOpen className="w-4 h-4" />
-              Introdução
-            </Tab>
-            <Tab
-              id="tipos"
-              className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-primary dark:data-[state=active]:border-secondary data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
-            >
-              <FileText className="w-4 h-4" />
-              Tipos de ICMS
-            </Tab>
-            <Tab
-              id="infograficos"
-              className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-primary dark:data-[state=active]:border-secondary data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
-            >
-              <BarChart3 className="w-4 h-4" />
-              Infográficos
-            </Tab>
-            <Tab
-              id="faq"
-              className="px-6 py-4 font-medium text-base transition-colors border-b-2 border-transparent data-[state=active]:border-primary dark:data-[state=active]:border-secondary data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
-            >
-              <HelpCircle className="w-4 h-4" />
-              Perguntas Frequentes
-            </Tab>
-          </TabList>
+        <div className="glass-card overflow-hidden shadow-xl border-0">
+          <div className="h-2 bg-gradient-primary"></div>
 
-          <TabPanel id="introducao">
-            <IntroducaoICMS />
-          </TabPanel>
+          <Tabs defaultTab="introducao" onChange={() => {}}>
+            <div className="bg-bg-medium/30 dark:bg-bg-dark/30 p-2 sm:p-4">
+              <TabList className="flex flex-wrap justify-start md:justify-center gap-2 py-2">
+                <Tab
+                  id="introducao"
+                  className="px-3 sm:px-6 py-3 font-medium text-sm sm:text-base rounded-lg transition-all border-0 data-[state=active]:bg-primary/10 dark:data-[state=active]:bg-secondary/10 data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Introdução</span>
+                </Tab>
+                <Tab
+                  id="tipos"
+                  className="px-3 sm:px-6 py-3 font-medium text-sm sm:text-base rounded-lg transition-all border-0 data-[state=active]:bg-primary/10 dark:data-[state=active]:bg-secondary/10 data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Tipos de ICMS</span>
+                </Tab>
+                <Tab
+                  id="infograficos"
+                  className="px-3 sm:px-6 py-3 font-medium text-sm sm:text-base rounded-lg transition-all border-0 data-[state=active]:bg-primary/10 dark:data-[state=active]:bg-secondary/10 data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
+                >
+                  <BarChart3 className="w-4 h-4" />
+                  <span>Infográficos</span>
+                </Tab>
+                <Tab
+                  id="faq"
+                  className="px-3 sm:px-6 py-3 font-medium text-sm sm:text-base rounded-lg transition-all border-0 data-[state=active]:bg-primary/10 dark:data-[state=active]:bg-secondary/10 data-[state=active]:text-primary dark:data-[state=active]:text-secondary flex items-center gap-2"
+                >
+                  <HelpCircle className="w-4 h-4" />
+                  <span>Perguntas Frequentes</span>
+                </Tab>
+              </TabList>
+            </div>
 
-          <TabPanel id="tipos">
-            <TiposICMS />
-          </TabPanel>
+            <div className="p-4 sm:p-6 md:p-8">
+              <TabPanel id="introducao">
+                <IntroducaoICMS />
+              </TabPanel>
 
-          <TabPanel id="infograficos">
-            <InfograficosICMS />
-          </TabPanel>
+              <TabPanel id="tipos">
+                <TiposICMS />
+              </TabPanel>
 
-          <TabPanel id="faq">
-            <FAQICMS />
-          </TabPanel>
-        </Tabs>
+              <TabPanel id="infograficos">
+                <InfograficosICMS />
+              </TabPanel>
+
+              <TabPanel id="faq">
+                <FAQICMS />
+              </TabPanel>
+            </div>
+          </Tabs>
+        </div>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/Card"
 import { cn } from "@/lib/utils"
-import { ChevronDown, ChevronRight } from "lucide-react"
+import { ChevronDown, ChevronRight, Info } from "lucide-react"
 
 const TiposICMS: React.FC = () => {
   const [activeCard, setActiveCard] = useState<string | null>("icms00")
@@ -20,19 +20,19 @@ const TiposICMS: React.FC = () => {
       title: "ICMS 00 - Tributação Normal",
       description: "Tributação integral sem redução de base de cálculo ou diferimento.",
       icon: (
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold text-lg">
           00
         </div>
       ),
       details: (
         <>
-          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-4 leading-relaxed">
+          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-6 leading-relaxed">
             O ICMS 00 representa a tributação normal do imposto, sem qualquer benefício fiscal. Nesta situação, o
             imposto é calculado integralmente sobre o valor da operação.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Características</h4>
               <ul className="space-y-2 text-txt-secondary dark:text-txt-muted">
                 <li className="flex items-start">
@@ -54,7 +54,7 @@ const TiposICMS: React.FC = () => {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Fórmula de cálculo</h4>
               <div className="space-y-3">
                 <p className="font-mono text-sm p-2 bg-white dark:bg-bg-darker rounded border border-bg-medium/30 dark:border-bg-dark/50">
@@ -68,7 +68,10 @@ const TiposICMS: React.FC = () => {
           </div>
 
           <div className="p-5 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-bg-medium/30 dark:border-bg-dark/50">
-            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light">Exemplo Prático</h4>
+            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light flex items-center gap-2">
+              <Info className="h-5 w-5 text-primary dark:text-secondary" />
+              Exemplo Prático
+            </h4>
             <p className="text-txt-secondary dark:text-txt-muted mb-3">
               Para um produto com valor de R$ 1.000,00, frete de R$ 100,00, sem IPI, em um estado com alíquota de 18%:
             </p>
@@ -89,19 +92,19 @@ const TiposICMS: React.FC = () => {
       title: "ICMS 10 - Substituição Tributária",
       description: "Tributação com cobrança do ICMS por substituição tributária.",
       icon: (
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold text-lg">
           10
         </div>
       ),
       details: (
         <>
-          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-4 leading-relaxed">
+          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-6 leading-relaxed">
             O ICMS 10 é utilizado em operações com substituição tributária, onde o imposto é recolhido antecipadamente
             pelo contribuinte substituto, em relação às operações subsequentes.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Características</h4>
               <ul className="space-y-2 text-txt-secondary dark:text-txt-muted">
                 <li className="flex items-start">
@@ -123,7 +126,7 @@ const TiposICMS: React.FC = () => {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Fórmula de cálculo</h4>
               <div className="space-y-3">
                 <p className="font-mono text-sm p-2 bg-white dark:bg-bg-darker rounded border border-bg-medium/30 dark:border-bg-dark/50">
@@ -143,7 +146,10 @@ const TiposICMS: React.FC = () => {
           </div>
 
           <div className="p-5 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-bg-medium/30 dark:border-bg-dark/50">
-            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light">Exemplo Prático</h4>
+            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light flex items-center gap-2">
+              <Info className="h-5 w-5 text-primary dark:text-secondary" />
+              Exemplo Prático
+            </h4>
             <p className="text-txt-secondary dark:text-txt-muted mb-3">
               Para um produto com valor de R$ 1.000,00, MVA de 40%, alíquota interna de 18%:
             </p>
@@ -170,19 +176,19 @@ const TiposICMS: React.FC = () => {
       title: "ICMS 20 - Base de Cálculo Reduzida",
       description: "Tributação com redução na base de cálculo do imposto.",
       icon: (
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold text-lg">
           20
         </div>
       ),
       details: (
         <>
-          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-4 leading-relaxed">
+          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-6 leading-relaxed">
             O ICMS 20 é aplicado em operações com redução na base de cálculo do imposto, geralmente como um benefício
             fiscal concedido pelos estados para determinados produtos ou operações.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Características</h4>
               <ul className="space-y-2 text-txt-secondary dark:text-txt-muted">
                 <li className="flex items-start">
@@ -204,7 +210,7 @@ const TiposICMS: React.FC = () => {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Fórmula de cálculo</h4>
               <div className="space-y-3">
                 <p className="font-mono text-sm p-2 bg-white dark:bg-bg-darker rounded border border-bg-medium/30 dark:border-bg-dark/50">
@@ -221,7 +227,10 @@ const TiposICMS: React.FC = () => {
           </div>
 
           <div className="p-5 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-bg-medium/30 dark:border-bg-dark/50">
-            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light">Exemplo Prático</h4>
+            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light flex items-center gap-2">
+              <Info className="h-5 w-5 text-primary dark:text-secondary" />
+              Exemplo Prático
+            </h4>
             <p className="text-txt-secondary dark:text-txt-muted mb-3">
               Para um produto com valor de R$ 1.000,00, redução de 30% na base de cálculo, alíquota de 18%:
             </p>
@@ -245,19 +254,19 @@ const TiposICMS: React.FC = () => {
       title: "ICMS 51 - Diferimento Parcial",
       description: "Tributação com diferimento parcial do imposto.",
       icon: (
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold text-lg">
           51
         </div>
       ),
       details: (
         <>
-          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-4 leading-relaxed">
+          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-6 leading-relaxed">
             O ICMS 51 é utilizado em operações com diferimento parcial do imposto, onde parte do pagamento do ICMS é
             postergada para etapas posteriores da cadeia comercial.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Características</h4>
               <ul className="space-y-2 text-txt-secondary dark:text-txt-muted">
                 <li className="flex items-start">
@@ -279,7 +288,7 @@ const TiposICMS: React.FC = () => {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Fórmula de cálculo</h4>
               <div className="space-y-3">
                 <p className="font-mono text-sm p-2 bg-white dark:bg-bg-darker rounded border border-bg-medium/30 dark:border-bg-dark/50">
@@ -299,7 +308,10 @@ const TiposICMS: React.FC = () => {
           </div>
 
           <div className="p-5 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-bg-medium/30 dark:border-bg-dark/50">
-            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light">Exemplo Prático</h4>
+            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light flex items-center gap-2">
+              <Info className="h-5 w-5 text-primary dark:text-secondary" />
+              Exemplo Prático
+            </h4>
             <p className="text-txt-secondary dark:text-txt-muted mb-3">
               Para um produto com valor de R$ 1.000,00, diferimento de 50%, alíquota de 18%:
             </p>
@@ -323,20 +335,20 @@ const TiposICMS: React.FC = () => {
       title: "ICMS 70 - Redução de Base de Cálculo com ST",
       description: "Tributação com redução na base de cálculo e substituição tributária.",
       icon: (
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold">
+        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-bold text-lg">
           70
         </div>
       ),
       details: (
         <>
-          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-4 leading-relaxed">
+          <p className="text-lg text-txt-secondary dark:text-txt-muted mb-6 leading-relaxed">
             O ICMS 70 combina a redução na base de cálculo com a substituição tributária. É utilizado em operações onde
             há um benefício fiscal de redução da base de cálculo, mas também existe a necessidade de recolhimento
             antecipado do imposto das etapas seguintes.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Características</h4>
               <ul className="space-y-2 text-txt-secondary dark:text-txt-muted">
                 <li className="flex items-start">
@@ -358,7 +370,7 @@ const TiposICMS: React.FC = () => {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50">
+            <div className="p-5 rounded-xl bg-bg-medium/30 dark:bg-bg-dark/30 border border-bg-medium/30 dark:border-bg-dark/50 hover:shadow-md transition-shadow">
               <h4 className="text-xl font-semibold mb-3 text-primary dark:text-secondary">Fórmula de cálculo</h4>
               <div className="space-y-3">
                 <p className="font-mono text-sm p-2 bg-white dark:bg-bg-darker rounded border border-bg-medium/30 dark:border-bg-dark/50">
@@ -381,7 +393,10 @@ const TiposICMS: React.FC = () => {
           </div>
 
           <div className="p-5 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-bg-medium/30 dark:border-bg-dark/50">
-            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light">Exemplo Prático</h4>
+            <h4 className="text-xl font-semibold mb-3 text-txt-primary dark:text-txt-light flex items-center gap-2">
+              <Info className="h-5 w-5 text-primary dark:text-secondary" />
+              Exemplo Prático
+            </h4>
             <p className="text-txt-secondary dark:text-txt-muted mb-3">
               Para um produto com valor de R$ 1.000,00, redução de 20% na base de cálculo, MVA de 40%, alíquota de 18%:
             </p>
@@ -421,12 +436,12 @@ const TiposICMS: React.FC = () => {
       </motion.div>
 
       <div className="grid grid-cols-1 gap-6">
-        {tiposICMS.map((tipo) => (
+        {tiposICMS.map((tipo, index) => (
           <motion.div
             key={tipo.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * tiposICMS.findIndex((t) => t.id === tipo.id) }}
+            transition={{ duration: 0.5, delay: 0.1 * index }}
           >
             <Card
               className={cn(
@@ -436,17 +451,19 @@ const TiposICMS: React.FC = () => {
             >
               <div className="h-2 bg-gradient-primary"></div>
               <div
-                className="flex items-center gap-4 p-6 cursor-pointer bg-bg-medium/30 dark:bg-bg-dark/30"
+                className="flex flex-col sm:flex-row sm:items-center gap-4 p-6 cursor-pointer bg-bg-medium/30 dark:bg-bg-dark/30"
                 onClick={() => handleCardClick(tipo.id)}
               >
-                {tipo.icon}
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-primary dark:text-secondary">{tipo.title}</h3>
-                  <p className="text-txt-secondary dark:text-txt-muted mt-1">{tipo.description}</p>
+                <div className="flex items-center gap-4">
+                  {tipo.icon}
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-primary dark:text-secondary">{tipo.title}</h3>
+                    <p className="text-txt-secondary dark:text-txt-muted mt-1">{tipo.description}</p>
+                  </div>
                 </div>
                 <ChevronDown
                   className={cn(
-                    "h-6 w-6 text-txt-muted transition-transform duration-300",
+                    "h-6 w-6 text-txt-muted transition-transform duration-300 ml-auto",
                     activeCard === tipo.id ? "rotate-180" : "",
                   )}
                 />

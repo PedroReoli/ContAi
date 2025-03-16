@@ -3,7 +3,7 @@
 import type React from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
-import { Info } from "lucide-react"
+import { Info, ArrowRight } from "lucide-react"
 import FluxoICMSItem from "./FluxoICMSItem"
 
 const InfograficosICMS: React.FC = () => {
@@ -12,24 +12,24 @@ const InfograficosICMS: React.FC = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <Card className="overflow-hidden border-0 shadow-xl bg-white/90 dark:bg-bg-darker/90 backdrop-blur-sm">
           <div className="h-2 bg-gradient-primary"></div>
-          <CardHeader className="bg-bg-medium/30 dark:bg-bg-dark/30 p-8">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-full bg-primary/10 dark:bg-primary/20">
+          <CardHeader className="bg-bg-medium/30 dark:bg-bg-dark/30 p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+              <div className="p-3 rounded-full bg-primary/10 dark:bg-primary/20 shrink-0">
                 <Info className="h-8 w-8 text-primary dark:text-secondary" />
               </div>
               <div>
-                <CardTitle className="text-3xl text-primary dark:text-secondary">
+                <CardTitle className="text-2xl sm:text-3xl text-primary dark:text-secondary">
                   Entendendo o ICMS: Um Guia Prático
                 </CardTitle>
-                <CardDescription className="text-lg text-txt-secondary dark:text-txt-muted mt-2">
+                <CardDescription className="text-base sm:text-lg text-txt-secondary dark:text-txt-muted mt-2">
                   Explore o fluxo do ICMS e suas particularidades
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="p-8">
+          <CardContent className="p-6 sm:p-8">
             <div className="space-y-10">
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ const InfograficosICMS: React.FC = () => {
                   </div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                   <FluxoICMSItem
                     title="Produtor Rural"
                     valor={500}
@@ -55,24 +55,12 @@ const InfograficosICMS: React.FC = () => {
                     isDiferido={true}
                   />
 
-                  <div className="hidden md:block">
-                    <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M59.0607 13.0607C59.6464 12.4749 59.6464 11.5251 59.0607 10.9393L49.5147 1.3934C48.9289 0.807611 47.9792 0.807611 47.3934 1.3934C46.8076 1.97919 46.8076 2.92893 47.3934 3.51472L55.8787 12L47.3934 20.4853C46.8076 21.0711 46.8076 22.0208 47.3934 22.6066C47.9792 23.1924 48.9289 23.1924 49.5147 22.6066L59.0607 13.0607ZM0 13.5H58V10.5H0V13.5Z"
-                        fill="currentColor"
-                        className="text-txt-muted dark:text-txt-muted"
-                      />
-                    </svg>
+                  <div className="hidden md:flex items-center justify-center">
+                    <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted" />
                   </div>
 
-                  <div className="block md:hidden my-4">
-                    <svg width="24" height="60" viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M13.0607 59.0607C12.4749 59.6464 11.5251 59.6464 10.9393 59.0607L1.3934 49.5147C0.807611 48.9289 0.807611 47.9792 1.3934 47.3934C1.97919 46.8076 2.92893 46.8076 3.51472 47.3934L12 55.8787L20.4853 47.3934C21.0711 46.8076 22.0208 46.8076 22.6066 47.3934C23.1924 47.9792 23.1924 48.9289 22.6066 49.5147L13.0607 59.0607ZM13.5 0V58H10.5V0H13.5Z"
-                        fill="currentColor"
-                        className="text-txt-muted dark:text-txt-muted"
-                      />
-                    </svg>
+                  <div className="block md:hidden">
+                    <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted rotate-90" />
                   </div>
 
                   <FluxoICMSItem
@@ -86,24 +74,12 @@ const InfograficosICMS: React.FC = () => {
                     isResponsavelDiferido={true}
                   />
 
-                  <div className="hidden md:block">
-                    <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M59.0607 13.0607C59.6464 12.4749 59.6464 11.5251 59.0607 10.9393L49.5147 1.3934C48.9289 0.807611 47.9792 0.807611 47.3934 1.3934C46.8076 1.97919 46.8076 2.92893 47.3934 3.51472L55.8787 12L47.3934 20.4853C46.8076 21.0711 46.8076 22.0208 47.3934 22.6066C47.9792 23.1924 48.9289 23.1924 49.5147 22.6066L59.0607 13.0607ZM0 13.5H58V10.5H0V13.5Z"
-                        fill="currentColor"
-                        className="text-txt-muted dark:text-txt-muted"
-                      />
-                    </svg>
+                  <div className="hidden md:flex items-center justify-center">
+                    <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted" />
                   </div>
 
-                  <div className="block md:hidden my-4">
-                    <svg width="24" height="60" viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M13.0607 59.0607C12.4749 59.6464 11.5251 59.6464 10.9393 59.0607L1.3934 49.5147C0.807611 48.9289 0.807611 47.9792 1.3934 47.3934C1.97919 46.8076 2.92893 46.8076 3.51472 47.3934L12 55.8787L20.4853 47.3934C21.0711 46.8076 22.0208 46.8076 22.6066 47.3934C23.1924 47.9792 23.1924 48.9289 22.6066 49.5147L13.0607 59.0607ZM13.5 0V58H10.5V0H13.5Z"
-                        fill="currentColor"
-                        className="text-txt-muted dark:text-txt-muted"
-                      />
-                    </svg>
+                  <div className="block md:hidden">
+                    <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted rotate-90" />
                   </div>
 
                   <FluxoICMSItem
@@ -172,20 +148,22 @@ const InfograficosICMS: React.FC = () => {
       >
         <Card className="overflow-hidden border-0 shadow-xl bg-white/90 dark:bg-bg-darker/90 backdrop-blur-sm">
           <div className="h-2 bg-gradient-primary"></div>
-          <CardHeader className="bg-bg-medium/30 dark:bg-bg-dark/30 p-8">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-full bg-primary/10 dark:bg-primary/20">
+          <CardHeader className="bg-bg-medium/30 dark:bg-bg-dark/30 p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+              <div className="p-3 rounded-full bg-primary/10 dark:bg-primary/20 shrink-0">
                 <Info className="h-8 w-8 text-primary dark:text-secondary" />
               </div>
               <div>
-                <CardTitle className="text-3xl text-primary dark:text-secondary">Substituição Tributária</CardTitle>
-                <CardDescription className="text-lg text-txt-secondary dark:text-txt-muted mt-2">
+                <CardTitle className="text-2xl sm:text-3xl text-primary dark:text-secondary">
+                  Substituição Tributária
+                </CardTitle>
+                <CardDescription className="text-base sm:text-lg text-txt-secondary dark:text-txt-muted mt-2">
                   Entenda como funciona a substituição tributária no ICMS
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="p-8">
+          <CardContent className="p-6 sm:p-8">
             <div className="space-y-6">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 <div className="p-6 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-bg-medium/30 dark:border-bg-dark/50">
@@ -197,7 +175,7 @@ const InfograficosICMS: React.FC = () => {
                 </div>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                 <FluxoICMSItem
                   title="Indústria"
                   valor={1000}
@@ -209,24 +187,12 @@ const InfograficosICMS: React.FC = () => {
                   isSubstituto={true}
                 />
 
-                <div className="hidden md:block">
-                  <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M59.0607 13.0607C59.6464 12.4749 59.6464 11.5251 59.0607 10.9393L49.5147 1.3934C48.9289 0.807611 47.9792 0.807611 47.3934 1.3934C46.8076 1.97919 46.8076 2.92893 47.3934 3.51472L55.8787 12L47.3934 20.4853C46.8076 21.0711 46.8076 22.0208 47.3934 22.6066C47.9792 23.1924 48.9289 23.1924 49.5147 22.6066L59.0607 13.0607ZM0 13.5H58V10.5H0V13.5Z"
-                      fill="currentColor"
-                      className="text-txt-muted dark:text-txt-muted"
-                    />
-                  </svg>
+                <div className="hidden md:flex items-center justify-center">
+                  <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted" />
                 </div>
 
-                <div className="block md:hidden my-4">
-                  <svg width="24" height="60" viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M13.0607 59.0607C12.4749 59.6464 11.5251 59.6464 10.9393 59.0607L1.3934 49.5147C0.807611 48.9289 0.807611 47.9792 1.3934 47.3934C1.97919 46.8076 2.92893 46.8076 3.51472 47.3934L12 55.8787L20.4853 47.3934C21.0711 46.8076 22.0208 46.8076 22.6066 47.3934C23.1924 47.9792 23.1924 48.9289 22.6066 49.5147L13.0607 59.0607ZM13.5 0V58H10.5V0H13.5Z"
-                      fill="currentColor"
-                      className="text-txt-muted dark:text-txt-muted"
-                    />
-                  </svg>
+                <div className="block md:hidden">
+                  <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted rotate-90" />
                 </div>
 
                 <FluxoICMSItem
@@ -239,24 +205,12 @@ const InfograficosICMS: React.FC = () => {
                   isSubstituido={true}
                 />
 
-                <div className="hidden md:block">
-                  <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M59.0607 13.0607C59.6464 12.4749 59.6464 11.5251 59.0607 10.9393L49.5147 1.3934C48.9289 0.807611 47.9792 0.807611 47.3934 1.3934C46.8076 1.97919 46.8076 2.92893 47.3934 3.51472L55.8787 12L47.3934 20.4853C46.8076 21.0711 46.8076 22.0208 47.3934 22.6066C47.9792 23.1924 48.9289 23.1924 49.5147 22.6066L59.0607 13.0607ZM0 13.5H58V10.5H0V13.5Z"
-                      fill="currentColor"
-                      className="text-txt-muted dark:text-txt-muted"
-                    />
-                  </svg>
+                <div className="hidden md:flex items-center justify-center">
+                  <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted" />
                 </div>
 
-                <div className="block md:hidden my-4">
-                  <svg width="24" height="60" viewBox="0 0 24 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M13.0607 59.0607C12.4749 59.6464 11.5251 59.6464 10.9393 59.0607L1.3934 49.5147C0.807611 48.9289 0.807611 47.9792 1.3934 47.3934C1.97919 46.8076 2.92893 46.8076 3.51472 47.3934L12 55.8787L20.4853 47.3934C21.0711 46.8076 22.0208 46.8076 22.6066 47.3934C23.1924 47.9792 23.1924 48.9289 22.6066 49.5147L13.0607 59.0607ZM13.5 0V58H10.5V0H13.5Z"
-                      fill="currentColor"
-                      className="text-txt-muted dark:text-txt-muted"
-                    />
-                  </svg>
+                <div className="block md:hidden">
+                  <ArrowRight className="h-8 w-8 text-txt-muted dark:text-txt-muted rotate-90" />
                 </div>
 
                 <FluxoICMSItem
