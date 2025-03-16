@@ -26,26 +26,26 @@ const HamburgerIcon: React.FC<HamburgerIconProps> = ({ isOpen, toggle }) => {
 
   return (
     <button
-      className="p-2 rounded-md hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white/30"
+      className="p-2 rounded-md hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-secondary/50"
       onClick={toggle}
       aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
       aria-expanded={isOpen}
     >
       <div className="w-6 h-6 flex flex-col justify-between items-center">
         <motion.span
-          className="w-6 h-0.5 bg-white rounded-full block"
+          className="w-6 h-0.5 bg-secondary rounded-full block"
           variants={topVariants}
           animate={isOpen ? "open" : "closed"}
           transition={{ duration: 0.3 }}
         />
         <motion.span
-          className="w-6 h-0.5 bg-white rounded-full block"
+          className="w-6 h-0.5 bg-txt-light rounded-full block"
           variants={centerVariants}
           animate={isOpen ? "open" : "closed"}
           transition={{ duration: 0.3 }}
         />
         <motion.span
-          className="w-6 h-0.5 bg-white rounded-full block"
+          className="w-6 h-0.5 bg-secondary rounded-full block"
           variants={bottomVariants}
           animate={isOpen ? "open" : "closed"}
           transition={{ duration: 0.3 }}
