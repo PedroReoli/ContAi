@@ -148,7 +148,7 @@ Valor do ICMS = Base de Cálculo × Alíquota × (1 - Percentual de Diferimento)
 
 1. Clone o repositório
    \`\`\`bash
-   git clone https://github.com/seu-usuario/contaai.git
+   git clone https://github.com/PedroReoli/ContAi.git
    cd contaai
    \`\`\`
 
@@ -181,12 +181,12 @@ yarn build
 
 ## Roadmap
 
-- [x] Sprint 1: Configuração inicial e estruturação do projeto
+- [ ] Sprint 1: Configuração inicial e estruturação do projeto
 - [ ] Sprint 2: Implementação das calculadoras de ICMS
 - [ ] Sprint 3: Desenvolvimento do mapa interativo
 - [ ] Sprint 4: Sistema de armazenamento local
 - [ ] Sprint 5: Exportação de relatórios em PDF
-- [ ] Sprint 6: Comparador de ICMS
+- [x] Sprint 6: Comparador de ICMS
 - [ ] Sprint 7: Testes e otimizações
 
 ## Contribuição
@@ -199,13 +199,10 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 4. Push para a branch (`git push origin feature/nova-funcionalidade`)
 5. Abra um Pull Request
 
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ## Contato
 
-Para dúvidas ou sugestões, entre em contato através de [email@exemplo.com](mailto:email@exemplo.com).
+Para dúvidas ou sugestões, entre em contato através de [pedrosousa2160@gmail.com](mailto:pedrosousa2160@gmail.com).
 
 ---
 
