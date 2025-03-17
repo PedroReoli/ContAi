@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { motion } from "framer-motion"
-import { Tabs, TabList, Tab, TabPanel } from "@/components/ui/Tabs"
+import { Tabs, TabList, Tab, TabPanel } from "@/components/ui/tabs"
 import { BookOpen, FileText, BarChart3, HelpCircle } from "lucide-react"
 import IntroducaoICMS from "@/components/page-components/explicacoes/IntroducaoICMS"
 import TiposICMS from "@/components/page-components/explicacoes/TiposICMS"
