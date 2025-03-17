@@ -6,7 +6,6 @@ import CalculadoraICMS00 from "@/components/page-components/calculadora/Calculad
 import CalculadoraICMS10 from "@/components/page-components/calculadora/CalculadoraICMS10"
 import CalculadoraICMS20 from "@/components/page-components/calculadora/CalculadoraICMS20"
 import CalculadoraICMS51 from "@/components/page-components/calculadora/CalculadoraICMS51"
-import CalculadoraICMS70 from "@/components/page-components/calculadora/CalculadoraICMS70"
 import { isLocalStorageDisponivel } from "@/utils/storage"
 import { motion } from "framer-motion"
 
@@ -29,7 +28,6 @@ const Calculadora: React.FC = () => {
       case "ICMS51":
         return <CalculadoraICMS51 storageDisponivel={storageDisponivel} />
       case "ICMS70":
-        return <CalculadoraICMS70 storageDisponivel={storageDisponivel} />
       default:
         return <CalculadoraICMS00 storageDisponivel={storageDisponivel} />
     }
@@ -78,7 +76,6 @@ const Calculadora: React.FC = () => {
               { id: "ICMS10", label: "ICMS 10" },
               { id: "ICMS20", label: "ICMS 20" },
               { id: "ICMS51", label: "ICMS 51" },
-              { id: "ICMS70", label: "ICMS 70" }
             ].map((tipo) => (
               <motion.button
                 key={tipo.id}
