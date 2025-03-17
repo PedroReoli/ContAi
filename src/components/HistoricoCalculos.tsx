@@ -2,8 +2,8 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
-import Button from "@/components/ui/Button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import Button from "@/components/ui/button"
 import { formatCurrency, formatDate, formatPercent } from "@/lib/utils"
 import { type CalculoSalvo, recuperarCalculos, removerCalculo, limparHistorico } from "@/utils/storage"
 import PdfPreview from "@/components/PdfPreview"

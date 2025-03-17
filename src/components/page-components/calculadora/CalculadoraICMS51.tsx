@@ -7,8 +7,8 @@ import { calcularIcmsOperacao, calcularIcmsDiferido, calcularIcms51 } from "@/ut
 import { salvarCalculo, type CalculoSalvo } from "@/utils/storage"
 import PdfPreview from "@/components/PdfPreview"
 import { Calculator, Save, FileText, AlertTriangle, CheckCircle, ArrowRight } from "lucide-react"
-import Button from "@/components/ui/Button"
-import Input from "@/components/ui/Input"
+import Button from "@/components/ui/button"
+import Input from "@/components/ui/input"
 
 interface CalculadoraProps {
   storageDisponivel: boolean

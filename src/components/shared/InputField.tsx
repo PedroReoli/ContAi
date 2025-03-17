@@ -1,6 +1,6 @@
 import type React from "react"
 import { type InputHTMLAttributes, forwardRef } from "react"
-import Input from "@/components/ui/Input"
+import Input from "@/components/ui/input"
 
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string

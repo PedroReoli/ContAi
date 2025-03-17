@@ -1,6 +1,6 @@
 import type React from "react"
 import { motion } from "framer-motion"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import HistoricoCalculos from "@/components/HistoricoCalculos"
 import { Database, Shield, HardDrive, Info } from 'lucide-react'
 
