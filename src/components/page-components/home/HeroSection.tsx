@@ -22,15 +22,6 @@ const HeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-secondary font-medium text-sm"
-            >
-              Simplifique seus cálculos tributários
-            </motion.div>
-
             <motion.h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-primary dark:text-secondary"
               initial={{ opacity: 0, y: 20 }}
